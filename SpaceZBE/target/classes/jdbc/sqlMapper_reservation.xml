@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaceZ.reservation">
+ <!--  <select id="SQL_SELECT_ALL" resultType="test.com.upload.BoardVO">
+    select * from board order by num desc 
+  </select> -->
+  
+ <!--  <select id="SQL_SELECT_ONE" resultType="test.com.upload.BoardVO">
+  	select * from board where num=#{num}
+  </select> -->
+  
+  <!-- <select id="SQL_SEARCH_LIST_NAME" resultType="test.com.upload.MemberVO" parameterType="hashmap">
+  	select * from member where name like #{searchWord} order by num desc
+  </select>
+  
+  <select id="SQL_SEARCH_LIST_TEL" resultType="test.com.upload.MemberVO">
+  	select * from member where tel like #{searchWord} order by num desc
+  </select> --> 
+  
+  <!-- <select id="SQL_SEARCH_LIST" resultType="test.com.upload.BoardVO">
+  	select * from board
+  	<if test= "searchKey == 'title'">
+  		where title like #{searchWord} order by num desc
+  	</if>
+  	<if test= "searchKey == 'writer'">
+  		where writer like #{searchWord} order by num desc
+  	</if>
+  </select> -->
+  
+  <insert id="SQL_RESERVE" parameterType="com.spaceZ.reservation.ReservationVO">
+  	insert into reservation(reservationid, spaceid, memberid, startdate, enddate, status, paystatus, price, prepay)
+  	values(seq_reservation.nextval,#{spaceId},#{memberId},#{startDate}, #{endDate}, #{status}, #{payStatus}, #{price}, #{prepay})
+  </insert>
+ <!--  <select id="SQL_RESERVE_DUPLICATE" resultType="com.spaceZ.reservation.ReservationVO">
+  	select count(*) cnt from reservation where tel like #{searchWord} order by num desc
+  </select> --> 
+  
+ <!--  <update id="SQL_UPDATE" parameterType="test.com.upload.BoardVO">
+  	update board set title=#{title}, content=#{content}, writer=#{writer}, image_url=#{image_url} where num=#{num}
+  </update> -->
+  
+  <!-- <delete id="SQL_DELETE" parameterType="test.com.upload.BoardVO">
+  	delete from board where num=#{num}
+  </delete> -->
+</mapper>

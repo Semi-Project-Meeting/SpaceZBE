@@ -15,7 +15,7 @@
   	select * from reply where spaceid = #{spaceId} order by replydate desc
   </select>
   
-  <select id="SQL_GET_REVIEWS" resultType="com.spaceZ.serviceInfo.ReviewVO">
+  <select id="SQL_GET_REVIEWS" resultType="com.spaceZ.review.ReviewVO">
   	select * from review where spaceid = #{spaceId} order by reviewdate desc
   </select>
   
