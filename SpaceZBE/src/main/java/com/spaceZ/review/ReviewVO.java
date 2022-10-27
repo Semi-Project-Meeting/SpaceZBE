@@ -1,4 +1,4 @@
-package com.spaceZ.serviceInfo;
+package com.spaceZ.review;
 
 public class ReviewVO {
 

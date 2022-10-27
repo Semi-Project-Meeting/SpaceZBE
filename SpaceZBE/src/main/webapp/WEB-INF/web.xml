@@ -7,10 +7,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-		/WEB-INF/spring/root-context.xml
-		/WEB-INF/spring/space-info-context.xml
-		/WEB-INF/spring/payment-context.xml
-		/WEB-INF/spring/reservation-context.xml
+			/WEB-INF/spring/root-context.xml
 		</param-value>
 	</context-param>
 	

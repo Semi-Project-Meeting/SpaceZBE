@@ -2,6 +2,11 @@ package com.spaceZ.serviceInfo;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+import com.spaceZ.review.ReviewVO;
+
+@Component
 public interface SpaceInfoDAO {
 	
 	public SpaceInfoVO selectOne(int spaceId);
