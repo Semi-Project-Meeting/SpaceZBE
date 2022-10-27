@@ -21,8 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.spaceZ.spaceZBE" />
+	<context:component-scan base-package="com.spaceZ.*" />
 	
-	
+	<context:property-placeholder location="classpath:payment/import.properties"/>
 	
 </beans:beans>
