@@ -1,5 +1,7 @@
 package com.spaceZ.reservation;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,6 +14,6 @@ public interface ReservationDAO {
 	int resvCancel(ReservationVO vo);
 	
 	// 중복 예약 체크하기
-	int resvDuplicate();
+	List<ReservationVO> resvDuplicate(ReservationVO vo);
 	
 }
