@@ -1,5 +1,7 @@
 package com.spaceZ.reservation;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,14 +25,16 @@ public class ReservationDAOimpl implements ReservationDAO {
 	
 	@Override
 	public int resvCancel(ReservationVO vo) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public int resvDuplicate() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<ReservationVO> resvDuplicate(ReservationVO vo) {
+		List<ReservationVO> vos = sqlSession.selectList("SQL_RESERVE_DUPLICATE",vo);
+		
+		logger.info("중복된 예약 개수 : {}",vos.size());
+		
+		return vos;
 	}
 
 }
