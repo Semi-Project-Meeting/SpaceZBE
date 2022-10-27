@@ -11,7 +11,7 @@
   	select round(avg(rating), 1) from review where spaceid = #{spaceId}
   </select>
   
-  <select id="SQL_GET_REPLYS" resultType="com.spaceZ.serviceInfo.ReplyVO">
+  <select id="SQL_GET_REPLYS" resultType="com.spaceZ.reply.ReplyVO">
   	select * from reply where spaceid = #{spaceId} order by replydate desc
   </select>
   
@@ -19,7 +19,7 @@
   	select * from review where spaceid = #{spaceId} order by reviewdate desc
   </select>
   
-  <select id="SQL_GET_QNAS" resultType="com.spaceZ.serviceInfo.QnaVO">
+  <select id="SQL_GET_QNAS" resultType="com.spaceZ.qna.QnaVO">
   	select * from qna where spaceid = #{spaceId} order by qnadate desc
   </select>
   
