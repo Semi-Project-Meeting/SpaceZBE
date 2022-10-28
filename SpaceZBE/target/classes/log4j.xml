@@ -19,11 +19,11 @@
 		<level value="info" />
 	</logger>
 	
-	<logger name="com.spaceZ.search">
+	<logger name="com.spaceZ.payment">
 		<level value="info" />
 	</logger>
 	
-	<logger name="com.spaceZ.payment">
+	<logger name="com.spaceZ.search">
 		<level value="info" />
 	</logger>
 	
