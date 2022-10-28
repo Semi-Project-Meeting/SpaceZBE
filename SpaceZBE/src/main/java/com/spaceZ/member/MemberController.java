@@ -44,7 +44,7 @@ public class MemberController {
 	@ResponseBody
 	public String login(@RequestBody MemberVO vo) {
 		
-		logger.info("/member/signUp..");
+		logger.info("/member/login..");
 		logger.info("vo : {}",vo);
 		
 		String txt = "{\"result\": OK}";
