@@ -7,11 +7,16 @@
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
 	integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY="
 	crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<!-- jQuery CDN --->
 <script>
 	$(document).ready(function() {
 		$("#importPayment").click(function() {
 			payment(); //버튼 클릭하면 호출
 		});
+
 	})
 
 	//버튼 클릭 시 실행
@@ -53,6 +58,23 @@
 			}
 		});
 	}
+
+	function cancelPay() {
+		jQuery.ajax({
+			"url" : "http://localhost:8090/spaceZBE/refund", // 예: http://www.myservice.com/payments/cancel
+			"type" : "POST",
+			"contentType" : "application/json",
+			"data" : JSON.stringify({
+				"merchant_uid" : "imp_314911968246", // 예: ORD20180131-0000011
+				"cancel_request_amount" : 10, // 환불금액
+				"reason" : "테스트 결제 환불", // 환불사유
+				"refund_holder" : "홍길동", // [가상계좌 환불시 필수입력] 환불 수령계좌 예금주
+				"refund_bank" : "88", // [가상계좌 환불시 필수입력] 환불 수령계좌 은행코드(예: KG이니시스의 경우 신한은행은 88번)
+				"refund_account" : "56211105948400" // [가상계좌 환불시 필수입력] 환불 수령계좌 번호
+			}),
+			"dataType" : "json"
+		});
+	}
 </script>
 
 </head>
@@ -68,5 +90,8 @@
 	<h1>IAMPORT 결제 데모</h1>
 
 	<button id="importPayment" type="button">결제테스트</button>
+
+
+	<button onclick="cancelPay()">환불하기</button>
 </body>
 </html>
