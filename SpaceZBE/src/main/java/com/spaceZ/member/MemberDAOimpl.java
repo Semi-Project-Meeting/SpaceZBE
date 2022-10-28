@@ -21,7 +21,11 @@ public class MemberDAOimpl implements MemberDAO {
 
 	@Override
 	public int signUp(MemberVO vo) {
-		int flag = 0;
+		logger.info("signUp()...");
+		logger.info("{}", vo);
+
+		int flag = sqlSession.insert("SQL_MEMBER_INSERT", vo);
+
 		return flag;
 	}
 
