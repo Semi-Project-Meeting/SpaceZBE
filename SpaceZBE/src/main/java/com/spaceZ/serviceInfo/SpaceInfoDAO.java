@@ -4,18 +4,20 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.spaceZ.qna.QnaVO;
+import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 
 @Component
 public interface SpaceInfoDAO {
 	
-	public SpaceInfoVO selectOne(int spaceId);
+	public SpaceInfoVO selectOne(long spaceId);
 
-	public double getRating(int spaceId);
+	public double getRating(long spaceId);
 
-	public List<ReplyVO> getReplys(int spaceId);
+	public List<ReplyVO> getReplys(long spaceId);
 
-	public List<ReviewVO> getReviews(int spaceId);
+	public List<ReviewVO> getReviews(long spaceId);
 
-	public List<QnaVO> getQnas(int spaceId);
+	public List<QnaVO> getQnas(long spaceId);
 }

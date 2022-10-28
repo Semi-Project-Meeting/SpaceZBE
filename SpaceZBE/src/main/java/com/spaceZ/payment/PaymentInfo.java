@@ -4,6 +4,14 @@ public class PaymentInfo {
 
 	private int price;
 
+	public PaymentInfo() {
+	}
+	
+	public PaymentInfo(int price) {
+		super();
+		this.price = price;
+	}
+
 	public int getPrice() {
 		return price;
 	}

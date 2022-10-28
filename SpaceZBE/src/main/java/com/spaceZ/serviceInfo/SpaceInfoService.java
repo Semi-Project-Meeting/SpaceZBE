@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spaceZ.qna.QnaVO;
+import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 
 @Service
@@ -16,24 +18,24 @@ public class SpaceInfoService {
 	@Autowired
 	SpaceInfoDAO dao;
 	
-	public SpaceInfoVO selectOne(int spaceId) {
+	public SpaceInfoVO selectOne(long spaceId) {
 		SpaceInfoVO vo = dao.selectOne(spaceId);
 		return vo;
 	}
 
-	public double getRating(int spaceId) {
+	public double getRating(long spaceId) {
 		return dao.getRating(spaceId);
 	}
 
-	public List<ReplyVO> getReplys(int spaceId) {
+	public List<ReplyVO> getReplys(long spaceId) {
 		return dao.getReplys(spaceId);
 	}
 
-	public List<ReviewVO> getReviews(int spaceId) {
+	public List<ReviewVO> getReviews(long spaceId) {
 		return dao.getReviews(spaceId);
 	}
 
-	public List<QnaVO> getQnas(int spaceId) {
+	public List<QnaVO> getQnas(long spaceId) {
 		return dao.getQnas(spaceId);
 	}
 }

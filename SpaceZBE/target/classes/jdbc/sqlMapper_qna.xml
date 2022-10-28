@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaceZ.qna">
+	<insert id="SQL_INSERT_QNA" parameterType="com.spaceZ.qna.QnaVO">
+		insert into qna(qnaid, spaceid, memberid, title, content, qnadate, answer) values(seq_qna.nextval,#{spaceId},#{memberId}, #{title}, #{content}, #{qnaDate}, null)
+	</insert>
+	
+	<update id="SQL_ANSWER_QNA" parameterType="com.spaceZ.qna.QnaVO">
+		update qna set answer = #{answer} where qnaid = #{qnaId}
+	</update>
+</mapper>
