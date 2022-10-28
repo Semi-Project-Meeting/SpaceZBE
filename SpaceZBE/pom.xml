@@ -14,6 +14,14 @@
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>codelds</id>
+			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+	</repositories>
+
+
 	<dependencies>
 		<!-- Spring -->
 		<dependency>
@@ -172,14 +180,14 @@
 			<artifactId>jackson-core-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+		
 		<!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-core-asl -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-
-
+		
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
@@ -217,8 +225,6 @@
 			<artifactId>org.json</artifactId>
 			<version>chargebee-1.0</version>
 		</dependency>
-
-
 	</dependencies>
 	<build>
 		<plugins>

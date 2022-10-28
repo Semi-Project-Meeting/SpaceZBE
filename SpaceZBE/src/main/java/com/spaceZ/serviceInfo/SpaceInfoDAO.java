@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.spaceZ.qna.QnaVO;
+import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 
 @Component

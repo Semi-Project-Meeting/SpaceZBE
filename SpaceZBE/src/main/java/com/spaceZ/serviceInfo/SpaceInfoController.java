@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spaceZ.qna.QnaVO;
+import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 
 /**
@@ -27,7 +29,7 @@ public class SpaceInfoController {
 	private static final Logger logger = LoggerFactory.getLogger(SpaceInfoController.class);
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	@RequestMapping(value = "/spaceInfo.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/spaceInfo", method = RequestMethod.GET)
 	@ResponseBody
 	public Map spaceInfo(Model model, int spaceId) {
 		

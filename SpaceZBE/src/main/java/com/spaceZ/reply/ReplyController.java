@@ -1,4 +1,4 @@
-package com.spaceZ.review;
+package com.spaceZ.reply;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,16 +15,16 @@ import com.spaceZ.review.ReviewVO;
  * Handles requests for the application home page.
  */
 @Controller
-public class ReviewController {
+public class ReplyController {
 	
 	@Autowired
-	ReviewService service;
+	ReplyService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ReplyController.class);
 	
-	@RequestMapping(value = "/insertReview", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertReply", method = RequestMethod.POST)
 	@ResponseBody
-	public String insertReview(@RequestBody ReviewVO vo) {
+	public String insertReply(@RequestBody ReplyVO vo) {
 		
 		int result = service.insert(vo);
 		
