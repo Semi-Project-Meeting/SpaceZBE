@@ -19,28 +19,28 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 	@Autowired
 	SqlSession sqlSession;
 	
-	public SpaceInfoVO selectOne(int spaceId) {
+	public SpaceInfoVO selectOne(long spaceId) {
 		
 		return sqlSession.selectOne("SQL_SELECT_ONE", spaceId);
 	}
 
 	@Override
-	public double getRating(int spaceId) {
+	public double getRating(long spaceId) {
 		return sqlSession.selectOne("SQL_GET_RATING", spaceId);
 	}
 
 	@Override
-	public List<ReplyVO> getReplys(int spaceId) {
+	public List<ReplyVO> getReplys(long spaceId) {
 		return sqlSession.selectList("SQL_GET_REPLYS", spaceId);
 	}
 
 	@Override
-	public List<ReviewVO> getReviews(int spaceId) {
+	public List<ReviewVO> getReviews(long spaceId) {
 		return sqlSession.selectList("SQL_GET_REVIEWS", spaceId);
 	}
 
 	@Override
-	public List<QnaVO> getQnas(int spaceId) {
+	public List<QnaVO> getQnas(long spaceId) {
 		return sqlSession.selectList("SQL_GET_QNAS", spaceId);
 	}
 }
