@@ -2,9 +2,9 @@ package com.spaceZ.serviceInfo;
 
 public class SpaceInfoVO {
 
-	private int spaceId;
-	private int companyId;
-	private int memberId;
+	private long spaceId;
+	private long companyId;
+	private long memberId;
 	private String spaceName;
 	private String info;
 	private String moreInfo;
@@ -16,7 +16,7 @@ public class SpaceInfoVO {
 	public SpaceInfoVO() {
 	}
 
-	public SpaceInfoVO(int spaceId, int companyId, int memberId, String spaceName, String info, String moreInfo,
+	public SpaceInfoVO(long spaceId, long companyId, long memberId, String spaceName, String info, String moreInfo,
 			String imgName, String type, String location, int price) {
 		this.spaceId = spaceId;
 		this.companyId = companyId;
@@ -30,27 +30,27 @@ public class SpaceInfoVO {
 		this.price = price;
 	}
 
-	public int getSpaceId() {
+	public long getSpaceId() {
 		return spaceId;
 	}
 
-	public void setSpaceId(int spaceId) {
+	public void setSpaceId(long spaceId) {
 		this.spaceId = spaceId;
 	}
 
-	public int getCompanyId() {
+	public long getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(long companyId) {
 		this.companyId = companyId;
 	}
 
-	public int getMemberId() {
+	public long getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(int memberId) {
+	public void setMemberId(long memberId) {
 		this.memberId = memberId;
 	}
 
@@ -114,14 +114,14 @@ public class SpaceInfoVO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + companyId;
+		result = prime * result + (int) (companyId ^ (companyId >>> 32));
 		result = prime * result + ((imgName == null) ? 0 : imgName.hashCode());
 		result = prime * result + ((info == null) ? 0 : info.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + memberId;
+		result = prime * result + (int) (memberId ^ (memberId >>> 32));
 		result = prime * result + ((moreInfo == null) ? 0 : moreInfo.hashCode());
 		result = prime * result + price;
-		result = prime * result + spaceId;
+		result = prime * result + (int) (spaceId ^ (spaceId >>> 32));
 		result = prime * result + ((spaceName == null) ? 0 : spaceName.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
@@ -183,8 +183,7 @@ public class SpaceInfoVO {
 				+ ", spaceName=" + spaceName + ", info=" + info + ", moreInfo=" + moreInfo + ", imgName=" + imgName
 				+ ", type=" + type + ", location=" + location + ", price=" + price + "]";
 	}
-	
-	
+
 	
 	
 }
