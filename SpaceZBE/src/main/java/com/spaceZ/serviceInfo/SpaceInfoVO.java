@@ -15,9 +15,16 @@ public class SpaceInfoVO {
 	
 	public SpaceInfoVO() {
 	}
+	
+	public SpaceInfoVO(long space_id) {
+		this.spaceId = space_id;
+	}
+
+	
 
 	public SpaceInfoVO(long spaceId, long companyId, long memberId, String spaceName, String info, String moreInfo,
 			String imgName, String type, String location, int price) {
+		super();
 		this.spaceId = spaceId;
 		this.companyId = companyId;
 		this.memberId = memberId;
@@ -29,86 +36,129 @@ public class SpaceInfoVO {
 		this.location = location;
 		this.price = price;
 	}
+
+	
+
 
 	public long getSpaceId() {
 		return spaceId;
 	}
 
+
+
 	public void setSpaceId(long spaceId) {
 		this.spaceId = spaceId;
 	}
+
+
 
 	public long getCompanyId() {
 		return companyId;
 	}
 
+
+
 	public void setCompanyId(long companyId) {
 		this.companyId = companyId;
 	}
+
+
 
 	public long getMemberId() {
 		return memberId;
 	}
 
+
+
 	public void setMemberId(long memberId) {
 		this.memberId = memberId;
 	}
+
+
 
 	public String getSpaceName() {
 		return spaceName;
 	}
 
+
+
 	public void setSpaceName(String spaceName) {
 		this.spaceName = spaceName;
 	}
+
+
 
 	public String getInfo() {
 		return info;
 	}
 
+
+
 	public void setInfo(String info) {
 		this.info = info;
 	}
+
+
 
 	public String getMoreInfo() {
 		return moreInfo;
 	}
 
+
+
 	public void setMoreInfo(String moreInfo) {
 		this.moreInfo = moreInfo;
 	}
+
+
 
 	public String getImgName() {
 		return imgName;
 	}
 
+
+
 	public void setImgName(String imgName) {
 		this.imgName = imgName;
 	}
+
+
 
 	public String getType() {
 		return type;
 	}
 
+
+
 	public void setType(String type) {
 		this.type = type;
 	}
+
+
 
 	public String getLocation() {
 		return location;
 	}
 
+
+
 	public void setLocation(String location) {
 		this.location = location;
 	}
+
+
 
 	public int getPrice() {
 		return price;
 	}
 
+
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+
 
 	@Override
 	public int hashCode() {
@@ -126,6 +176,8 @@ public class SpaceInfoVO {
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -177,13 +229,16 @@ public class SpaceInfoVO {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "SpaceInfoVO [spaceId=" + spaceId + ", companyId=" + companyId + ", memberId=" + memberId
 				+ ", spaceName=" + spaceName + ", info=" + info + ", moreInfo=" + moreInfo + ", imgName=" + imgName
 				+ ", type=" + type + ", location=" + location + ", price=" + price + "]";
 	}
-
+	
+	
 	
 	
 }
