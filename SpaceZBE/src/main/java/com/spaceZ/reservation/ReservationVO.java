@@ -10,13 +10,14 @@ public class ReservationVO {
 	private String payStatus; // 결제 상태
 	private int price; // 이용 가격
 	private String prepay; // 선결제 or 보증금결제 
+	private String reserveTime; // 예약한 시간
 	
 	public ReservationVO() {
 		
 	}
 	
 	public ReservationVO(long reservationId, long spaceId, long memberId, String startDate, String endDate,
-			String status, String payStatus, int price, String prepay) {
+			String status, String payStatus, int price, String prepay, String reserveTime) {
 		super();
 		this.reservationId = reservationId;
 		this.spaceId = spaceId;
@@ -27,6 +28,7 @@ public class ReservationVO {
 		this.payStatus = payStatus;
 		this.price = price;
 		this.prepay = prepay;
+		this.reserveTime = reserveTime;
 	}
 
 	public long getReservationId() {
@@ -101,6 +103,14 @@ public class ReservationVO {
 		this.prepay = prepay;
 	}
 	
+	public String getReserveTime() {
+		return reserveTime;
+	}
+
+	public void setReserveTime(String reserveTime) {
+		this.reserveTime = reserveTime;
+	}
+
 	@Override
 	public String toString() {
 		return "ReservationVO [reservationId=" + reservationId + ", spaceId=" + spaceId + ", memberId=" + memberId
