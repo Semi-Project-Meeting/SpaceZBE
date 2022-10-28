@@ -2,36 +2,36 @@ package com.spaceZ.reply;
 
 public class ReplyVO {
 
-	private int replyId;
-	private int spaceId;
-	private int memberId;
+	private long replyId;
+	private long spaceId;
+	private long memberId;
 	private String content;
 	private String replyDate;
 	public ReplyVO() {
 	}
-	public ReplyVO(int replyId, int spaceId, int memberId, String content, String replyDate) {
+	public ReplyVO(long replyId, long spaceId, long memberId, String content, String replyDate) {
 		this.replyId = replyId;
 		this.spaceId = spaceId;
 		this.memberId = memberId;
 		this.content = content;
 		this.replyDate = replyDate;
 	}
-	public int getReplyId() {
+	public long getReplyId() {
 		return replyId;
 	}
-	public void setReplyId(int replyId) {
+	public void setReplyId(long replyId) {
 		this.replyId = replyId;
 	}
-	public int getSpaceId() {
+	public long getSpaceId() {
 		return spaceId;
 	}
-	public void setSpaceId(int spaceId) {
+	public void setSpaceId(long spaceId) {
 		this.spaceId = spaceId;
 	}
-	public int getMemberId() {
+	public long getMemberId() {
 		return memberId;
 	}
-	public void setMemberId(int memberId) {
+	public void setMemberId(long memberId) {
 		this.memberId = memberId;
 	}
 	public String getContent() {
@@ -51,10 +51,10 @@ public class ReplyVO {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + memberId;
+		result = prime * result + (int) (memberId ^ (memberId >>> 32));
 		result = prime * result + ((replyDate == null) ? 0 : replyDate.hashCode());
-		result = prime * result + replyId;
-		result = prime * result + spaceId;
+		result = prime * result + (int) (replyId ^ (replyId >>> 32));
+		result = prime * result + (int) (spaceId ^ (spaceId >>> 32));
 		return result;
 	}
 	@Override
@@ -86,9 +86,8 @@ public class ReplyVO {
 	}
 	@Override
 	public String toString() {
-		return "replyId [replyId=" + replyId + ", spaceId=" + spaceId + ", memberId=" + memberId + ", content="
+		return "ReplyVO [replyId=" + replyId + ", spaceId=" + spaceId + ", memberId=" + memberId + ", content="
 				+ content + ", replyDate=" + replyDate + "]";
 	}
-	
 	
 }

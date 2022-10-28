@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaceZ.search">
+	<select id="SQL_SELECT_CAN_RESV_SPACES" resultType="com.spaceZ.serviceInfo.SpaceInfoVO" parameterType="com.spaceZ.search.SearchVO">
+		select s.spaceid, s.companyid, s.spacename, s.imgname, s.type, s.location, s.price from space s full outer join reservation r on s.spaceid = r.spaceid 
+		where (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord}) and <![CDATA[((#{searchTime} >= r.startdate and #{searchTime} <= r.enddate) or r.reservationid is null)]]>
+	</select>
+	
+</mapper>

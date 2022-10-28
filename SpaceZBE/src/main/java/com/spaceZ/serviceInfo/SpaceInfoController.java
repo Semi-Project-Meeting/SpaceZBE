@@ -31,7 +31,7 @@ public class SpaceInfoController {
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@RequestMapping(value = "/spaceInfo", method = RequestMethod.GET)
 	@ResponseBody
-	public Map spaceInfo(Model model, int spaceId) {
+	public Map spaceInfo(Model model, long spaceId) {
 		
 		SpaceInfoVO vo = service.selectOne(spaceId);
 		double avgRating = service.getRating(spaceId);

@@ -2,16 +2,16 @@ package com.spaceZ.qna;
 
 public class QnaVO {
 
-	private int qnaId;
-	private int spaceId;
-	private int memberId;
+	private long qnaId;
+	private long spaceId;
+	private long memberId;
 	private String title;
 	private String content;
 	private String qnaDate;
 	private String answer;
 	public QnaVO() {
 	}
-	public QnaVO(int qnaId, int spaceId, int memberId, String title, String content, String qnaDate, String answer) {
+	public QnaVO(long qnaId, long spaceId, long memberId, String title, String content, String qnaDate, String answer) {
 		this.qnaId = qnaId;
 		this.spaceId = spaceId;
 		this.memberId = memberId;
@@ -20,22 +20,22 @@ public class QnaVO {
 		this.qnaDate = qnaDate;
 		this.answer = answer;
 	}
-	public int getQnaId() {
+	public long getQnaId() {
 		return qnaId;
 	}
-	public void setQnaId(int qnaId) {
+	public void setQnaId(long qnaId) {
 		this.qnaId = qnaId;
 	}
-	public int getSpaceId() {
+	public long getSpaceId() {
 		return spaceId;
 	}
-	public void setSpaceId(int spaceId) {
+	public void setSpaceId(long spaceId) {
 		this.spaceId = spaceId;
 	}
-	public int getMemberId() {
+	public long getMemberId() {
 		return memberId;
 	}
-	public void setMemberId(int memberId) {
+	public void setMemberId(long memberId) {
 		this.memberId = memberId;
 	}
 	public String getTitle() {
@@ -68,10 +68,10 @@ public class QnaVO {
 		int result = 1;
 		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + memberId;
+		result = prime * result + (int) (memberId ^ (memberId >>> 32));
 		result = prime * result + ((qnaDate == null) ? 0 : qnaDate.hashCode());
-		result = prime * result + qnaId;
-		result = prime * result + spaceId;
+		result = prime * result + (int) (qnaId ^ (qnaId >>> 32));
+		result = prime * result + (int) (spaceId ^ (spaceId >>> 32));
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -117,6 +117,5 @@ public class QnaVO {
 		return "QnaVO [qnaId=" + qnaId + ", spaceId=" + spaceId + ", memberId=" + memberId + ", title=" + title
 				+ ", content=" + content + ", qnaDate=" + qnaDate + ", answer=" + answer + "]";
 	}
-	
 	
 }
