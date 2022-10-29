@@ -39,8 +39,13 @@ public class MemberDAOimpl implements MemberDAO {
 	public int signUp(MemberVO vo) {
 		logger.info("signUp()...");
 		logger.info("{}", vo);
+		
+		int flag = 0;
 
-		int flag = sqlSession.insert("SQL_MEMBER_INSERT", vo);
+		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_EMAIL_CHECK", vo);
+		if(vo2==null) {
+			flag = sqlSession.insert("SQL_MEMBER_INSERT", vo);
+		}
 		session.removeAttribute("certificationNum");
 
 		return flag;
@@ -85,10 +90,10 @@ public class MemberDAOimpl implements MemberDAO {
 		logger.info("idCheck()...");
 		logger.info("vo:{}",vo);
 
-		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_SELECT_ONE", vo);
+		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_EMAIL_CHECK", vo);
 		logger.info("vo2:{}", vo2);
 		
-		if (vo2 == null) {
+		if (vo2 != null) {
 			flag = 0;
 		}
 
