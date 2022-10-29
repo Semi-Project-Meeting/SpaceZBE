@@ -54,6 +54,7 @@ public class MemberDAOimpl implements MemberDAO {
 		//image 이름 추출 및 파일 업로드
 		String imgname = fao.getImageName(vo.getMultipartFile());
 		vo.setImgname(imgname);
+		logger.info("이미지저장 후 vo:{}", vo);
 		
 		int flag = sqlSession.update("SQL_MEMBER_UPDATE", vo);
 
