@@ -1,5 +1,7 @@
 package com.spaceZ.member;
 
+import javax.mail.MessagingException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +30,7 @@ public class MemberService {
 		return dao.idCheck(vo);
 	}
 
-	public int sendEmail(MemberVO vo) {
+	public int sendEmail(EmailVO vo) throws MessagingException {
 		logger.info("sendEmail...");
 		return dao.sendEmail(vo);
 	}

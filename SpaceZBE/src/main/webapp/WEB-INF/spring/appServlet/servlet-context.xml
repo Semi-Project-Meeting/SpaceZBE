@@ -30,5 +30,7 @@
 	<context:component-scan base-package="com.spaceZ.*" />
 	
 	<context:property-placeholder location="classpath:payment/import.properties"/>
+	
+	<context:component-scan base-package="test.com.sendmail" />
 
 </beans:beans>

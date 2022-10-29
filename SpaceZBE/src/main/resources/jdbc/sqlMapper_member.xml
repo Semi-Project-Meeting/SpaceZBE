@@ -10,9 +10,15 @@
 		values(seq_member.nextval,#{membername},#{email},#{password},#{authority})
 	</insert>
 
+	<select id="SQL_MEMBER_LOGIN"
+		resultType="com.spaceZ.member.MemberVO"> select
+		* from member where memberid=#{memberid} and
+		password=#{password}
+	</select>
+
 	<select id="SQL_MEMBER_SELECT_ONE"
 		resultType="com.spaceZ.member.MemberVO"> select
-		* from member where memberid=#{memberid} and password=#{password}
+		* from member where memberid=#{memberid}
 	</select>
 
 
