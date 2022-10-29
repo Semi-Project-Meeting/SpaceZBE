@@ -19,16 +19,16 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImageFAOimpl implements ImageFAO {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@Autowired
 	ServletContext context;
-	
+
 	@Override
 	public String getImageName(MultipartFile multipartFile) {
-		//파일명을 난수화하기 위해 random으로 돌린다.
-		String imgname = UUID.randomUUID().toString();
-		
-		//파일이 비어있지 않을 때, 파일 저장 후 파일명을 return 한다.
+		// 파일명을 난수화하기 위해 random으로 돌린다.
+		String imgname = UUID.randomUUID().toString() + "_";
+
+		// 파일이 비어있지 않을 때, 파일 저장 후 파일명을 return 한다.
 		if (multipartFile.getSize() > 0) {
 			logger.info("{}", multipartFile.getOriginalFilename());
 			imgname += multipartFile.getOriginalFilename();
@@ -60,10 +60,8 @@ public class ImageFAOimpl implements ImageFAO {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else { //파일이 비어있을 때는 기본이미지로 저장한다.
-			if (imgname.equals("")) {
-				imgname = "img_0001.png"; //기본이미지
-			}
+		} else { // 파일이 비어있을 때는 기본이미지로 저장한다.
+			imgname = "img_0001.png"; // 기본이미지
 		} // 파일이 넘어왔을때만 처리하는 분기.
 
 		return imgname;

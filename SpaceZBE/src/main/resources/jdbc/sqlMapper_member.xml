@@ -25,7 +25,7 @@
 	<update id="SQL_MEMBER_UPDATE"
 		parameterType="com.spaceZ.member.MemberVO">
 		update member set
-		password=#{password},membername=#{membername},imgname=#{imgname}
+		membername=#{membername},imgname=#{imgname}
 		where memberid=#{memberid}
 	</update>
 
