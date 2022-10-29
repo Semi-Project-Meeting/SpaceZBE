@@ -21,6 +21,11 @@
 		select * from member where memberid=#{memberid}
 	</select>
 
+	<select id="SQL_MEMBER_EMAIL_CHECK"
+		resultType="com.spaceZ.member.MemberVO"> 
+		select * from member where email=#{email}
+	</select>
+
 
 	<update id="SQL_MEMBER_UPDATE"
 		parameterType="com.spaceZ.member.MemberVO">
