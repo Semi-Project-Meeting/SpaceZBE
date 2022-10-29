@@ -35,4 +35,9 @@ public class MemberService {
 		return dao.sendEmail(vo);
 	}
 
+	public int update(MemberVO vo) {
+		logger.info("update...");
+		return dao.update(vo);
+	}
+
 }

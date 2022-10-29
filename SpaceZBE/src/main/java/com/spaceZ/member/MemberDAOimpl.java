@@ -1,10 +1,8 @@
 package com.spaceZ.member;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.mail.MessagingException;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
@@ -16,6 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
+
+import com.spaceZ.spaceZBE.ImageFAO;
 
 @Repository
 public class MemberDAOimpl implements MemberDAO {
@@ -30,6 +30,10 @@ public class MemberDAOimpl implements MemberDAO {
 
 	@Autowired
 	JavaMailSender javaMailSender;
+	
+	
+	@Autowired
+	ImageFAO fao;
 
 	@Override
 	public int signUp(MemberVO vo) {
@@ -38,6 +42,20 @@ public class MemberDAOimpl implements MemberDAO {
 
 		int flag = sqlSession.insert("SQL_MEMBER_INSERT", vo);
 		session.removeAttribute("certificationNum");
+
+		return flag;
+	}
+	
+	@Override
+	public int update(MemberVO vo) {
+		logger.info("update()...");
+		logger.info("{}", vo);
+		
+		//image 이름 추출 및 파일 업로드
+		String imgname = fao.getImageName(vo.getMultipartFile());
+		vo.setImgname(imgname);
+		
+		int flag = sqlSession.update("SQL_MEMBER_UPDATE", vo);
 
 		return flag;
 	}

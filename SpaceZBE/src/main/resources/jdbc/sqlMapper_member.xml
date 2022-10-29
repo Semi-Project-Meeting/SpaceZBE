@@ -11,15 +11,23 @@
 	</insert>
 
 	<select id="SQL_MEMBER_LOGIN"
-		resultType="com.spaceZ.member.MemberVO"> select
-		* from member where memberid=#{memberid} and
+		resultType="com.spaceZ.member.MemberVO"> 
+		select * from member where email=#{email} and
 		password=#{password}
 	</select>
 
 	<select id="SQL_MEMBER_SELECT_ONE"
-		resultType="com.spaceZ.member.MemberVO"> select
-		* from member where memberid=#{memberid}
+		resultType="com.spaceZ.member.MemberVO"> 
+		select * from member where memberid=#{memberid}
 	</select>
+
+
+	<update id="SQL_MEMBER_UPDATE"
+		parameterType="com.spaceZ.member.MemberVO">
+		update member set
+		password=#{password},membername=#{membername},imgname=#{imgname}
+		where memberid=#{memberid}
+	</update>
 
 
 </mapper>

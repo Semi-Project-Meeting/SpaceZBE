@@ -1,5 +1,7 @@
 package com.spaceZ.member;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * 회원가입, 로그인, 이메일인증
+ * 회원가입, 회원수정, (회원정보조회), 로그인, 로그아웃, 이메일인증(아이디 중복확인)
  */
 @Controller
 public class MemberController {
@@ -20,12 +22,15 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
+	@Autowired
+	HttpSession session;
+
 	// 회원가입
 	@RequestMapping(value = "/member/signUp", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String signUp(@RequestBody MemberVO vo) {
 
-		logger.info("/member/signUp..");
+		logger.info("signUp..");
 		logger.info("vo : {}", vo);
 
 		String txt = "{\"result\": OK}";
@@ -39,12 +44,31 @@ public class MemberController {
 		return txt;
 	}
 
+	// 회원수정
+	@RequestMapping(value = "/member/update", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public String memberUpdate(@RequestBody MemberVO vo) {
+
+		logger.info("memberUpdate..");
+		logger.info("vo : {}", vo);
+
+		String txt = "{\"result\": OK}";
+
+		int result = service.update(vo);
+
+		if (result == 0) {
+			txt = "{\"result\": 회원수정 실패.}";
+		}
+
+		return txt;
+	}
+
 	// 로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String login(@RequestBody MemberVO vo) {
 
-		logger.info("/member/login..");
+		logger.info("login..");
 		logger.info("vo : {}", vo);
 
 		String txt = "{\"result\": OK}";
@@ -58,20 +82,30 @@ public class MemberController {
 		return txt;
 	}
 
+	// 로그아웃
+	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
+	@ResponseBody
+	public String logout() {
+		logger.info("logout..");
+		session.removeAttribute("memberid");
+		session.removeAttribute("authority");
+		return "{\"result\": OK}";
+	}
+
 	// 메일작성 전송
 	@RequestMapping(value = "/member/mail", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
 	public String sendMail(@RequestBody EmailVO vo) {
-		logger.info("Welcome sendMail..");
+		logger.info("sendMail..");
 		logger.info("{}", vo);
 
 		String txt = "{\"result\": 전송 실패.}";
-		
+
 		try {
 			int num = service.sendEmail(vo);
-			if(num != 0) {
-				txt = "{\"result\": "+num+"}";
-			} else if(num == 0) {
+			if (num != 0) {
+				txt = "{\"result\": " + num + "}";
+			} else if (num == 0) {
 				txt = "{\"result\": 이미 존재하는 아이디입니다.}";
 			}
 		} catch (Exception e) {
