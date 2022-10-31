@@ -12,13 +12,13 @@
 		</property>
 	</bean>
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	 <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
-      <property name="driverClassName"
-         value="${oracle.driver_name}"></property>
-      <property name="url" value="${oracle.url}"></property>
-      <property name="username" value="${oracle.user}"></property>
-      <property name="password" value="${oracle.password}"></property>
-   </bean>
+	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="${oracle.driver_name}"></property>
+		<property name="url" value="${oracle.url}"></property>
+		<property name="username" value="${oracle.user}"></property>
+		<property name="password" value="${oracle.password}"></property>
+	</bean>
 
 	<bean id="sqlSessionFactoryBean"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -31,5 +31,26 @@
 	<bean id="sqlSessionTemplate"
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>
+
+
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"></property>
+		<property name="port" value="587"></property>
+		<property name="username" value="***"></property>
+		<property name="password" value="***"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- -1 : 허용범주 안에서 최대크기 -->
+		<property name="maxUploadSize" value="-1"></property>
 	</bean>
 </beans>
