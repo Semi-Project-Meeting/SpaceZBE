@@ -12,6 +12,7 @@ public class SpaceInfoVO {
 	private String type;
 	private String location;
 	private int price;
+	private String phone_number;
 	
 	public SpaceInfoVO() {
 	}
@@ -20,10 +21,8 @@ public class SpaceInfoVO {
 		this.spaceId = space_id;
 	}
 
-	
-
 	public SpaceInfoVO(long spaceId, long companyId, long memberId, String spaceName, String info, String moreInfo,
-			String imgName, String type, String location, int price) {
+			String imgName, String type, String location, int price, String phone_number) {
 		super();
 		this.spaceId = spaceId;
 		this.companyId = companyId;
@@ -35,10 +34,8 @@ public class SpaceInfoVO {
 		this.type = type;
 		this.location = location;
 		this.price = price;
+		this.phone_number = phone_number;
 	}
-
-	
-
 
 	public long getSpaceId() {
 		return spaceId;
@@ -158,7 +155,13 @@ public class SpaceInfoVO {
 		this.price = price;
 	}
 
+	public String getPhone_number() {
+		return phone_number;
+	}
 
+	public void setPhone_number(String phone_number) {
+		this.phone_number = phone_number;
+	}
 
 	@Override
 	public int hashCode() {
