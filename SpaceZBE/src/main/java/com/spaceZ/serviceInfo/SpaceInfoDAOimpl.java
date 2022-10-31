@@ -15,12 +15,12 @@ import com.spaceZ.review.ReviewVO;
 @Repository
 public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 	private static final Logger logger = LoggerFactory.getLogger(SpaceInfoDAOimpl.class);
-	
+
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	public SpaceInfoVO selectOne(long spaceId) {
-		
+
 		return sqlSession.selectOne("SQL_SELECT_ONE", spaceId);
 	}
 
@@ -45,5 +45,26 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 	@Override
 	public List<QnaVO> getQnas(long spaceId) {
 		return sqlSession.selectList("SQL_GET_QNAS", spaceId);
+	}
+
+	// 사무공간 등록
+	@Override
+	public int insertSpace(SpaceInfoVO vo) {
+
+		logger.info("사무공간 등록..");
+
+		int flag = sqlSession.insert("SQL_SPACE_INSERT", vo);
+
+		return flag;
+	}
+
+	// 사무공간 수정
+	@Override
+	public int updateSpace(SpaceInfoVO vo) {
+		logger.info("사무공간 수정..");
+
+		int flag = sqlSession.insert("SQL_SPACE_UPDATE", vo);
+
+		return flag;
 	}
 }

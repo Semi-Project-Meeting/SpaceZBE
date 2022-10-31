@@ -14,10 +14,10 @@ import com.spaceZ.review.ReviewVO;
 @Service
 public class SpaceInfoService {
 	private static final Logger logger = LoggerFactory.getLogger(SpaceInfoService.class);
-	
+
 	@Autowired
 	SpaceInfoDAO dao;
-	
+
 	public SpaceInfoVO selectOne(long spaceId) {
 		SpaceInfoVO vo = dao.selectOne(spaceId);
 		return vo;
@@ -37,5 +37,17 @@ public class SpaceInfoService {
 
 	public List<QnaVO> getQnas(long spaceId) {
 		return dao.getQnas(spaceId);
+	}
+
+	// 사무 공간 등록
+	public int insertSpace(SpaceInfoVO vo) {
+
+		return dao.insertSpace(vo);
+	}
+
+	// 사무 공간 수정
+	public int updateSpace(SpaceInfoVO vo) {
+
+		return dao.updateSpace(vo);
 	}
 }
