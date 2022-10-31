@@ -23,21 +23,21 @@ public class SearchController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 	
-//	@RequestMapping(value = "/search", method = RequestMethod.POST)
-//	@ResponseBody
-//	public Map<String, List<SpaceInfoVO>> search(@RequestBody SearchVO vo) {
-//		vo.setSearchWord("%" + vo.getSearchWord() + "%");
-//		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
-//		List<SpaceInfoVO> vos = service.getCanResvSpaces(vo);
-//		map.put("vos", vos);
-//
-//		return map;
-//	}
-	
-	@RequestMapping(value="/search", method = RequestMethod.GET)
-	public String search() {
-		logger.info("hello search");
-		
-		return "search";
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, List<SpaceInfoVO>> search(@RequestBody SearchVO vo) {
+		vo.setSearchWord("%" + vo.getSearchWord() + "%");
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		List<SpaceInfoVO> vos = service.getCanResvSpaces(vo);
+		map.put("vos", vos);
+
+		return map;
 	}
+	
+//	@RequestMapping(value="/search", method = RequestMethod.GET)
+//	public String search() {
+//		logger.info("hello search");
+//		
+//		return "search";
+//	}
 }
