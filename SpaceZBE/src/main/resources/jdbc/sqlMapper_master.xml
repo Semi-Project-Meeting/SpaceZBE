@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaceZ.reservation">
+
+	<insert id="SQL_MANAGER_APPLY"
+		parameterType="com.spaceZ.master.ManagerVO">
+		insert into manager(managerid, memberid,companyname,status)
+		values(seq_manager.nextval,#{memberId},#{company_name},1)
+	</insert>
+
+	<select id="SQL_MANAGER_SELECT_ALL"
+		resultType="com.spaceZ.master.ManagerVO">
+		select * from manager where status = 1 order by managerid desc
+	</select>
+
+</mapper>
