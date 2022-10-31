@@ -34,6 +34,8 @@ public class SpaceInfoController {
 	@ResponseBody
 	public Map spaceInfo(Model model, long spaceId) {
 
+		logger.info("{}", spaceId);
+
 		SpaceInfoVO vo = service.selectOne(spaceId);
 		double avgRating = service.getRating(spaceId);
 		List<QnaVO> qnas = service.getQnas(spaceId);
@@ -43,10 +45,18 @@ public class SpaceInfoController {
 		Map map = new HashMap();
 
 		map.put("space", vo);
-		map.put("avgRating", avgRating);
-		map.put("replys", replys);
-		map.put("reviews", reviews);
-		map.put("qnas", qnas);
+		if(avgRating != -1) {
+			map.put("avgRating", avgRating);
+		}
+		if(replys != null) {
+			map.put("replys", replys);			
+		}
+		if(reviews != null) {
+			map.put("reviews", reviews);			
+		}
+		if(qnas != null) {
+			map.put("qnas", qnas);
+		}
 		return map;
 	}
 

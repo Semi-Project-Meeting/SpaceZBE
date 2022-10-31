@@ -26,7 +26,10 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 
 	@Override
 	public double getRating(long spaceId) {
-		return sqlSession.selectOne("SQL_GET_RATING", spaceId);
+		if(sqlSession.selectOne("SQL_GET_RATING", spaceId)== null) {
+			return -1;
+		} else
+			return sqlSession.selectOne("SQL_GET_RATING", spaceId);
 	}
 
 	@Override
