@@ -23,33 +23,14 @@
   	select * from qna where spaceid = #{spaceId} order by qnadate desc
   </select>
   
-<!--   <select id="SQL_SELECT_ONE" resultType="test.com.mybatis.MemberVO"> -->
-<!--   	select * from member where num=#{num} -->
-<!--   </select> -->
+  <insert id="SQL_SPACE_INSERT" parameterType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		insert into space(spaceid, companyid, spacename, info, moreinfo, imgname, type , location, price , phone_number)
+		values(seq_space.nextval,#{companyId},#{spaceName}, #{info}, #{moreInfo}, #{imgName},#{type},#{location},#{price},#{phone_number})
+ </insert>
+ 
+  <update id="SQL_SPACE_UPDATE" parameterType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		update space set spacename=#{spaceName}, info=#{info}, moreinfo=#{moreInfo}, imgname=#{imgName}, type=#{type}, location=#{location}, price=#{price}, phone_number=#{phone_number}
+		where spaceid = #{spaceId}
+ </update>
   
-<!--   <select id="SQL_SEARCH_LIST_TEL" resultType="test.com.mybatis.MemberVO" parameterType="hashmap"> -->
-<!--   	select * from member where tel like #{searchWord} order by num desc -->
-<!--   </select> -->
-  
-<!--   <select id="SQL_SEARCH_LIST" resultType="test.com.mybatis.MemberVO" parameterType="hashmap"> -->
-<!--   	select * from member -->
-<!--   	<if test="searchKey == 'name'"> -->
-<!--   		where name like #{searchWord} order by num desc -->
-<!--   	</if> -->
-<!--   	<if test="searchKey == 'tel'"> -->
-<!--   		where tel like #{searchWord} order by num desc -->
-<!--   	</if> -->
-<!--   </select> -->
-  
-<!--   <insert id="SQL_INSERT" parameterType="test.com.mybatis.MemberVO"> -->
-<!--   	insert into member(num,id,pw,name,tel) values(seq_member.nextval,#{id},#{pw},#{name},#{tel}) -->
-<!--   </insert> -->
-  
-<!--   <update id="SQL_UPDATE" parameterType="test.com.mybatis.MemberVO"> -->
-<!--   	update member set id=#{id},pw=#{pw},name=#{name},tel=#{tel} where num=#{num} -->
-<!--   </update> -->
-  
-<!--   <delete id="SQL_DELETE" parameterType="test.com.mybatis.MemberVO"> -->
-<!--   	delete from member where num=#{num} -->
-<!--   </delete> -->
 </mapper>

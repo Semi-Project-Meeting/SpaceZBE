@@ -31,9 +31,9 @@
 		select (TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),'YYYY-MM-DD HH24:MI') - TO_DATE(reserve_time,'YYYY-MM-DD HH24:MI'))*24 from reservation where reservationid=#{reservationId}
 	</select>
 
-	<delete id="SQL_RESERVE_CANCEL"
+	<update id="SQL_RESERVE_CANCEL"
 		parameterType="com.spaceZ.reservation.ReservationVO">
 		update reservation set status = 2 where reservationid=#{reservationId}
-	</delete>
+	</update>
 
 </mapper>

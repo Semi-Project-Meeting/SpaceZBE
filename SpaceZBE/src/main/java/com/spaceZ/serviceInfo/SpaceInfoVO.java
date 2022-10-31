@@ -4,7 +4,6 @@ public class SpaceInfoVO {
 
 	private int spaceId;
 	private int companyId;
-	private int memberId;
 	private String spaceName;
 	private String info;
 	private String moreInfo;
@@ -12,15 +11,15 @@ public class SpaceInfoVO {
 	private String type;
 	private String location;
 	private int price;
+	private String phone_number;
 	
 	public SpaceInfoVO() {
 	}
 
-	public SpaceInfoVO(int spaceId, int companyId, int memberId, String spaceName, String info, String moreInfo,
+	public SpaceInfoVO(int spaceId, int companyId, String spaceName, String info, String moreInfo,
 			String imgName, String type, String location, int price) {
 		this.spaceId = spaceId;
 		this.companyId = companyId;
-		this.memberId = memberId;
 		this.spaceName = spaceName;
 		this.info = info;
 		this.moreInfo = moreInfo;
@@ -44,14 +43,6 @@ public class SpaceInfoVO {
 
 	public void setCompanyId(int companyId) {
 		this.companyId = companyId;
-	}
-
-	public int getMemberId() {
-		return memberId;
-	}
-
-	public void setMemberId(int memberId) {
-		this.memberId = memberId;
 	}
 
 	public String getSpaceName() {
@@ -110,6 +101,14 @@ public class SpaceInfoVO {
 		this.price = price;
 	}
 
+	public String getPhone_number() {
+		return phone_number;
+	}
+
+	public void setPhone_number(String phone_number) {
+		this.phone_number = phone_number;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -118,7 +117,6 @@ public class SpaceInfoVO {
 		result = prime * result + ((imgName == null) ? 0 : imgName.hashCode());
 		result = prime * result + ((info == null) ? 0 : info.hashCode());
 		result = prime * result + ((location == null) ? 0 : location.hashCode());
-		result = prime * result + memberId;
 		result = prime * result + ((moreInfo == null) ? 0 : moreInfo.hashCode());
 		result = prime * result + price;
 		result = prime * result + spaceId;
@@ -153,8 +151,6 @@ public class SpaceInfoVO {
 				return false;
 		} else if (!location.equals(other.location))
 			return false;
-		if (memberId != other.memberId)
-			return false;
 		if (moreInfo == null) {
 			if (other.moreInfo != null)
 				return false;
@@ -179,7 +175,7 @@ public class SpaceInfoVO {
 
 	@Override
 	public String toString() {
-		return "SpaceInfoVO [spaceId=" + spaceId + ", companyId=" + companyId + ", memberId=" + memberId
+		return "SpaceInfoVO [spaceId=" + spaceId + ", companyId=" + companyId
 				+ ", spaceName=" + spaceName + ", info=" + info + ", moreInfo=" + moreInfo + ", imgName=" + imgName
 				+ ", type=" + type + ", location=" + location + ", price=" + price + "]";
 	}

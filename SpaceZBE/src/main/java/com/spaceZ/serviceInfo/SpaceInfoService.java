@@ -38,4 +38,16 @@ public class SpaceInfoService {
 	public List<QnaVO> getQnas(int spaceId) {
 		return dao.getQnas(spaceId);
 	}
+	
+	// 사무 공간 등록 
+	public int insertSpace(SpaceInfoVO vo) {
+		
+		return dao.insertSpace(vo);
+	}
+	
+	// 사무 공간 수정
+	public int updateSpace(SpaceInfoVO vo) {
+		
+		return dao.updateSpace(vo);
+	}
 }
