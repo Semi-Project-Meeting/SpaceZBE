@@ -15,7 +15,19 @@
 		<level value="info" />
 	</logger>
 	
+	<logger name="com.spaceZ.member">
+		<level value="info" />
+	</logger>
+	
 	<logger name="com.spaceZ.reservation">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.spaceZ.payment">
+		<level value="info" />
+	</logger>
+	
+	<logger name="com.spaceZ.search">
 		<level value="info" />
 	</logger>
 	

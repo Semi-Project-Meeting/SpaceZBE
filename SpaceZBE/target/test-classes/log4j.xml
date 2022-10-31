@@ -15,26 +15,10 @@
 		<level value="info" />
 	</logger>
 	
-	<logger name="com.spaceZ.member">
-		<level value="info" />
-	</logger>
-	
-	<logger name="com.spaceZ.reservation">
-		<level value="info" />
-	</logger>
-	
-	<logger name="com.spaceZ.payment">
-		<level value="info" />
-	</logger>
-	
-	<logger name="com.spaceZ.search">
-		<level value="info" />
-	</logger>
-	
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
 		<level value="info" />
-	</logger>
+	</logger>	
 	
 	<logger name="org.springframework.beans">
 		<level value="info" />
@@ -50,7 +34,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="warn" />
+		<priority value="info" />
 		<appender-ref ref="console" />
 	</root>
 	
