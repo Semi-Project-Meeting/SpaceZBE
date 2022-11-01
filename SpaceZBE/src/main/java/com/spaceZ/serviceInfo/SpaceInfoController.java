@@ -41,6 +41,7 @@ public class SpaceInfoController {
 		List<QnaVO> qnas = service.getQnas(spaceId);
 		List<ReplyVO> replys = service.getReplys(spaceId);
 		List<ReviewVO> reviews = service.getReviews(spaceId);
+		List<ImagesVO> images = service.getImages(spaceId);
 
 		Map map = new HashMap();
 
@@ -57,12 +58,16 @@ public class SpaceInfoController {
 		if(qnas != null) {
 			map.put("qnas", qnas);
 		}
+		if(images != null) {
+			map.put("images", images);
+		}
+		
 		return map;
 	}
 
 	@ResponseBody
 	@RequestMapping(value = "/back-office/insert", method = RequestMethod.POST, produces = "application/json; charset=utf8")
-	public String insert(@RequestBody SpaceInfoVO vo) {
+	public String insert(SpaceInfoVO vo) {
 
 		logger.info("사무공간 등록 insert..{}");
 

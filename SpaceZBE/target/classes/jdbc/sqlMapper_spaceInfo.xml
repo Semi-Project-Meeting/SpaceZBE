@@ -25,12 +25,27 @@
 	<select id="SQL_GET_QNAS" resultType="com.spaceZ.qna.QnaVO">
 		select * from qna where spaceid = #{spaceId} order by qnadate desc
 	</select>
-	<insert id="SQL_SPACE_INSERT"
+	
+	<!-- 다중 이미지 출력 -->
+	<select id="SQL_GET_IMAGES" resultType="com.spaceZ.serviceInfo.ImagesVO">
+		select * from images where spaceid = #{spaceId} order by imagesid desc
+	</select>
+	
+	<select id="SQL_SPACEID" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select seq_space.nextval as spaceid from dual
+	</select>
+	
+	<insert id="SQL_SPACE_INSERT" 
 		parameterType="com.spaceZ.serviceInfo.SpaceInfoVO">
 		insert into space(spaceid, companyid, spacename, info,
-		moreinfo, imgname, type , location, price , phone_number)
-		values(seq_space.nextval,#{companyId},#{spaceName}, #{info},
-		#{moreInfo}, #{imgName},#{type},#{location},#{price},#{phone_number})
+		moreinfo, type , location, price , phone_number)
+		values(#{spaceId},#{companyId},#{spaceName}, #{info},
+		#{moreInfo},#{type},#{location},#{price},#{phone_number})
+	</insert>
+	
+	<insert id="SQL_IMAGE_INSERT"
+		parameterType="com.spaceZ.serviceInfo.ImagesVO">
+		insert into images (imagesid, spaceid, imgname) values(seq_images.nextval,#{spaceId},#{imgName})
 	</insert>
 
 	<update id="SQL_SPACE_UPDATE"

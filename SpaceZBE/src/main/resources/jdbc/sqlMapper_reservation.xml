@@ -17,13 +17,13 @@
 		insert into reservation(reservationid, companyid, spaceid, memberid, startdate,
 		enddate, status, paystatus, price, prepay, reserve_time)
 		values(seq_reservation.nextval,#{companyId},#{spaceId},#{memberId},#{startDate},
-		#{endDate}, 1, #{payStatus}, #{price},
+		#{endDate}, 001, #{payStatus}, #{price},
 		#{prepay},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'))
 	</insert>
 
 	<select id="SQL_RESERVE_DUPLICATE"
 		resultType="com.spaceZ.reservation.ReservationVO">
-		select reservationid from reservation <![CDATA[where #{startDate} <= enddate and #{endDate} >= startdate and spaceid = #{spaceId} and status = 1]]>
+		select reservationid from reservation <![CDATA[where #{startDate} <= enddate and #{endDate} >= startdate and spaceid = #{spaceId} and status = 001]]>
 	</select>
 
 	<select id="SQL_RESERVE_TIME"
@@ -33,7 +33,7 @@
 
 	<delete id="SQL_RESERVE_CANCEL"
 		parameterType="com.spaceZ.reservation.ReservationVO">
-		update reservation set status = 2 where reservationid=#{reservationId}
+		update reservation set status = 002 where reservationid=#{reservationId}
 	</delete>
 	
 	<select id="SQL_BACKOFFICE_SELECT_ALL" resultType="com.spaceZ.reservation.ReservationVO">
