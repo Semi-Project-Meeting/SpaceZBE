@@ -15,4 +15,14 @@ public class ReviewDAOimpl implements ReviewDAO {
 		return sqlSession.insert("SQL_INSERT_REVIEW", vo);
 	}
 
+	@Override
+	public int update(ReviewVO vo) {
+		return sqlSession.update("SQL_UPDATE_REVIEW", vo);
+	}
+
+	@Override
+	public int delete(ReviewVO vo) {
+		return sqlSession.delete("SQL_DELETE_REVIEW", vo);
+	}
+
 }

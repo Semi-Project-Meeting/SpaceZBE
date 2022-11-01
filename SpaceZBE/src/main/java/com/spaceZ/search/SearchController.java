@@ -40,4 +40,20 @@ public class SearchController {
 //		
 //		return "search";
 //	}
+	
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+	public String test() {
+		
+		return "test";
+	}
+	
+	@RequestMapping(value = "/searchAll", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, List<SpaceInfoVO>> searchAll() {
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		List<SpaceInfoVO> vos = service.getAllSpaces();
+		map.put("vos", vos);
+
+		return map;
+	}
 }

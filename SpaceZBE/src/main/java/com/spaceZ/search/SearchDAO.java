@@ -11,4 +11,6 @@ public interface SearchDAO {
 
 	public List<SpaceInfoVO> getCanResvSpaces(SearchVO vo);
 
+	public List<SpaceInfoVO> getAllSpaces();
+
 }

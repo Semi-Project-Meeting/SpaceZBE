@@ -8,4 +8,7 @@
 		where (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord}) and <![CDATA[((#{searchTime} < r.startdate or #{searchTime} > r.enddate) or r.reservationid is null)]]>
 	</select>
 	
+	<select id="SQL_SELECT_ALL_SPACES" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select * from space
+	</select>
 </mapper>

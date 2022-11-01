@@ -16,4 +16,12 @@ public class QnaService {
 		return dao.answerQna(vo);
 	}
 
+	public int deleteQna(QnaVO vo) {
+		return dao.deleteQna(vo);
+	}
+
+	public int deleteAnswer(QnaVO vo) {
+		return dao.deleteAnswer(vo);
+	}
+
 }
