@@ -50,4 +50,12 @@ public class SpaceInfoService {
 
 		return dao.updateSpace(vo);
 	}
+
+	public List<SpaceInfoVO> recentlyAdded() {
+		return dao.recentlyAdded();
+	}
+
+	public List<SpaceInfoVO> recommendedSpace() {
+		return dao.recommendedSpace();
+	}
 }

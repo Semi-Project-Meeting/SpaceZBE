@@ -67,4 +67,14 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 
 		return flag;
 	}
+
+	@Override
+	public List<SpaceInfoVO> recentlyAdded() {
+		return sqlSession.selectList("SQL_RECENTLY_ADDED");
+	}
+
+	@Override
+	public List<SpaceInfoVO> recommendedSpace() {
+		return sqlSession.selectList("SQL_RECOMMENDED_SPACE");
+	}
 }
