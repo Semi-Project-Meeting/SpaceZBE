@@ -35,4 +35,30 @@ public class ReplyController {
 		}
 	}
 	
+	@RequestMapping(value = "/updateReply", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateReply(@RequestBody ReplyVO vo) {
+		
+		int result = service.update(vo);
+		
+		if(result == 0) {
+			return "{\"result\":\"NOT OK\"}";
+		} else {
+			return "{\"result\":\"OK\"}";
+		}
+	}
+	
+	@RequestMapping(value = "/deleteReply", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteReply(@RequestBody ReplyVO vo) {
+		
+		int result = service.delete(vo);
+		
+		if(result == 0) {
+			return "{\"result\":\"NOT OK\"}";
+		} else {
+			return "{\"result\":\"OK\"}";
+		}
+	}
+	
 }

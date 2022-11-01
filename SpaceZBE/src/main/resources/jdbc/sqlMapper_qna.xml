@@ -10,4 +10,12 @@
 	<update id="SQL_ANSWER_QNA" parameterType="com.spaceZ.qna.QnaVO">
 		update qna set answer = #{answer} where qnaid = #{qnaId}
 	</update>
+	
+	<delete id="SQL_DELETE_QNA" parameterType="com.spaceZ.qna.QnaVO">
+		delete from qna where qnaid = #{qnaId}
+	</delete>
+	
+	<update id="SQL_DELETE_ANSWER" parameterType="com.spaceZ.qna.QnaVO">
+		update qna set answer = null where qnaid = #{qnaId}
+	</update>
 </mapper>

@@ -24,10 +24,46 @@ public class QnaController {
 		}
 	}
 	
+	@RequestMapping(value = "/deleteQna", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteQna(@RequestBody QnaVO vo) {
+		int flag = service.deleteQna(vo);
+		
+		if(flag == 1) {
+			return "{\"result\":\"OK\"}";
+		} else {
+			return "{\"result\":\"NOT OK\"}";
+		}
+	}
+	
 	@RequestMapping(value = "/answerQna", method = RequestMethod.POST)
 	@ResponseBody
 	public String answerQna(@RequestBody QnaVO vo) {
 		int flag = service.answerQna(vo);
+		
+		if(flag == 1) {
+			return "{\"result\":\"OK\"}";
+		} else {
+			return "{\"result\":\"NOT OK\"}";
+		}
+	}
+	
+	@RequestMapping(value = "/updateAnswer", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateAnswer(@RequestBody QnaVO vo) {
+		int flag = service.answerQna(vo);
+		
+		if(flag == 1) {
+			return "{\"result\":\"OK\"}";
+		} else {
+			return "{\"result\":\"NOT OK\"}";
+		}
+	}
+	
+	@RequestMapping(value = "/deleteAnswer", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteAnswer(@RequestBody QnaVO vo) {
+		int flag = service.deleteAnswer(vo);
 		
 		if(flag == 1) {
 			return "{\"result\":\"OK\"}";

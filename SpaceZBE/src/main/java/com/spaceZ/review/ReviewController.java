@@ -35,4 +35,29 @@ public class ReviewController {
 		}
 	}
 	
+	@RequestMapping(value = "/updateReview", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateReview(@RequestBody ReviewVO vo) {
+		
+		int result = service.update(vo);
+		
+		if(result == 0) {
+			return "{\"result\":\"NOT OK\"}";
+		} else {
+			return "{\"result\":\"OK\"}";
+		}
+	}
+	
+	@RequestMapping(value = "/deleteReview", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteReview(@RequestBody ReviewVO vo) {
+		
+		int result = service.delete(vo);
+		
+		if(result == 0) {
+			return "{\"result\":\"NOT OK\"}";
+		} else {
+			return "{\"result\":\"OK\"}";
+		}
+	}
 }

@@ -14,4 +14,14 @@ public class ReplyDAOimpl implements ReplyDAO {
 		return sqlSession.insert("SQL_INSERT_REPLY", vo);
 	}
 
+	@Override
+	public int update(ReplyVO vo) {
+		return sqlSession.update("SQL_UPDATE_REPLY", vo);
+	}
+
+	@Override
+	public int delete(ReplyVO vo) {
+		return sqlSession.delete("SQL_DELETE_REPLY", vo);
+	}
+
 }

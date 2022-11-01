@@ -9,5 +9,9 @@ public interface QnaDAO {
 
 	int answerQna(QnaVO vo);
 
+	int deleteQna(QnaVO vo);
+
+	int deleteAnswer(QnaVO vo);
+
 	
 }
