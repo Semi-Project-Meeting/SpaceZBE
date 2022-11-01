@@ -28,6 +28,23 @@ public class ManagerService {
 		
 		return dao.selectAll();
 	}
+	
+	// 관리자 신청 승인하기.
+	public int approve(ManagerVO vo) {
+		
+		return dao.approve(vo);
+	}
+	
+	// 관리자 신청 승인하기.
+	public int promote(ManagerVO vo) {
+		
+		return dao.promote(vo);
+	}
 
+	// 관리자 신청 거부 하기.
+	public int disapprove(ManagerVO vo) {
+		
+		return dao.disapprove(vo);
+	}
 
 }

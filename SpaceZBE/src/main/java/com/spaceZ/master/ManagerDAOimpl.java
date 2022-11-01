@@ -33,5 +33,31 @@ public class ManagerDAOimpl implements ManagerDAO {
 		
 		return vos;
 	}
+	
+	// 관리자로 승인하기 (승인완료 상태로 바꾸기)
+	@Override
+	public int approve(ManagerVO vo) {
+		
+		int flag = sqlSession.update("SQL_APPROVE_STATUS",vo);
+		
+		return flag;
+	}
+	
+	// Authority manager로 바꾸기.  
+	@Override
+	public int promote(ManagerVO vo) {
+		int flag = sqlSession.update("SQL_PROMOTE_AUTHORITY",vo);
+		
+		return flag;
+	}
 
+	// 관리자신청 거부 하기 (승인거부 상태로 바꾸기)
+	@Override
+	public int disapprove(ManagerVO vo) {
+		
+		int flag = sqlSession.update("SQL_DISAPPROVE_STATUS",vo);
+		
+		return flag;
+	}
+	
 }
