@@ -34,6 +34,17 @@ public class SearchController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, List<SpaceInfoVO>> searchGet(SearchVO vo) {
+		vo.setSearchWord("%" + vo.getSearchWord() + "%");
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		List<SpaceInfoVO> vos = service.getCanResvSpaces(vo);
+		map.put("vos", vos);
+
+		return map;
+	}
+	
 //	@RequestMapping(value="/search", method = RequestMethod.GET)
 //	public String search() {
 //		logger.info("hello search");
