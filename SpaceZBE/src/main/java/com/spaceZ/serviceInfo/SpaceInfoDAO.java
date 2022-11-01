@@ -21,6 +21,9 @@ public interface SpaceInfoDAO {
 
 	public List<QnaVO> getQnas(long spaceId);
 	
+	// 사무공간 상세페이지 다중 이미지 출력
+	public List<ImagesVO> getImages(long spaceId);
+	
 	// 사무공간 등록 (백오피스)
 	public int insertSpace(SpaceInfoVO vo);
 	

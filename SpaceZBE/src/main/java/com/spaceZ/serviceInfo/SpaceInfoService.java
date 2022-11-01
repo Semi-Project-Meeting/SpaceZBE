@@ -38,7 +38,12 @@ public class SpaceInfoService {
 	public List<QnaVO> getQnas(long spaceId) {
 		return dao.getQnas(spaceId);
 	}
-
+	
+	// 사무공간 상세페이지 다중 이미지
+	public List<ImagesVO> getImages(long spaceId) {
+		return dao.getImages(spaceId);
+	}
+	
 	// 사무 공간 등록
 	public int insertSpace(SpaceInfoVO vo) {
 

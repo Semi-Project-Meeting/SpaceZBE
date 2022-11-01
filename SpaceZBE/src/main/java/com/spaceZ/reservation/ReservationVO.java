@@ -10,7 +10,7 @@ public class ReservationVO {
 	private String status; // 예약 상태
 	private String payStatus; // 결제 상태
 	private int price; // 이용 가격
-	private String prepay; // 선결제 or 보증금결제 
+	private String prepay; // 선결제 or 보증금결제 or 후결제     0  1  2
 	private String reserve_time; // 예약한 시간
 	
 	public ReservationVO() {
