@@ -55,4 +55,12 @@
 		location=#{location}, price=#{price}, phone_number=#{phone_number}
 		where spaceid = #{spaceId}
 	</update>
+	
+	<select id="SQL_RECENTLY_ADDED" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select * from space where <![CDATA[rownum <= 5 order by spaceid desc]]>
+	</select>
+	
+	<select id="SQL_RECOMMENDED_SPACE" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select * from space s left join (select spaceid from review group by spaceid order by avg(rating) desc) r on s.spaceid = r.spaceid where r.spaceid is not null and <![CDATA[rownum <= 5]]>
+	</select>
 </mapper>

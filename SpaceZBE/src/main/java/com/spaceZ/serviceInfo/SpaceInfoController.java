@@ -99,4 +99,27 @@ public class SpaceInfoController {
 		return txt;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/recentlyAdded", method = RequestMethod.GET)
+	public Map<String, List<SpaceInfoVO>> update() {
+		List<SpaceInfoVO> vos = service.recentlyAdded();
+
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		
+		map.put("vos", vos);
+
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/recommendedSpace", method = RequestMethod.GET)
+	public Map<String, List<SpaceInfoVO>> recommendedSpace() {
+		List<SpaceInfoVO> vos = service.recommendedSpace();
+
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		
+		map.put("vos", vos);
+
+		return map;
+	}
 }

@@ -107,5 +107,15 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 	public List<ImagesVO> getImages(long spaceId) {
 		
 		return sqlSession.selectList("SQL_GET_IMAGES", spaceId);
+  }
+  
+	@Override
+	public List<SpaceInfoVO> recentlyAdded() {
+		return sqlSession.selectList("SQL_RECENTLY_ADDED");
+	}
+
+	@Override
+	public List<SpaceInfoVO> recommendedSpace() {
+		return sqlSession.selectList("SQL_RECOMMENDED_SPACE");
 	}
 }

@@ -29,4 +29,8 @@ public interface SpaceInfoDAO {
 	
 	// 사무공간 수정 (백오피스)
 	public int updateSpace(SpaceInfoVO vo);
+
+	public List<SpaceInfoVO> recentlyAdded();
+
+	public List<SpaceInfoVO> recommendedSpace();
 }
