@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spaceZ.qna.QnaVO;
-import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 import com.spaceZ.spaceZBE.ImageFAO;
 
@@ -36,11 +35,6 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 			return -1;
 		} else
 			return sqlSession.selectOne("SQL_GET_RATING", spaceId);
-	}
-
-	@Override
-	public List<ReplyVO> getReplys(long spaceId) {
-		return sqlSession.selectList("SQL_GET_REPLYS", spaceId);
 	}
 
 	@Override

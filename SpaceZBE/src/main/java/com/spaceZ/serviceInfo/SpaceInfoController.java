@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spaceZ.payment.PaymentDAOimpl;
 import com.spaceZ.payment.PaymentService;
 import com.spaceZ.qna.QnaVO;
-import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 
 /**
@@ -47,7 +46,6 @@ public class SpaceInfoController {
 		SpaceInfoVO vo = service.selectOne(spaceId);
 		double avgRating = service.getRating(spaceId);
 		List<QnaVO> qnas = service.getQnas(spaceId);
-		List<ReplyVO> replys = service.getReplys(spaceId);
 		List<ReviewVO> reviews = service.getReviews(spaceId);
 		List<ImagesVO> images = service.getImages(spaceId);
 
@@ -57,9 +55,6 @@ public class SpaceInfoController {
 		
 		if(avgRating != -1) {
 			map.put("avgRating", avgRating);
-		}
-		if(replys != null) {
-			map.put("replys", replys);			
 		}
 		if(reviews != null) {
 			map.put("reviews", reviews);			
