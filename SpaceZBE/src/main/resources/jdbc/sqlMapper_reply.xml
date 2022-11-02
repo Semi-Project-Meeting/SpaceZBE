@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spaceZ.reply">
 	<insert id="SQL_INSERT_REPLY" parameterType="com.spaceZ.reply.ReplyVO">
-		insert into reply(replyid, spaceid, memberid, content, replydate) values(seq_reply.nextval, #{spaceId}, #{memberId},#{content}, #{replyDate})
+		insert into reply(replyid, spaceid, memberid, content, replydate) values(seq_reply.nextval, #{spaceId}, #{memberId},#{content}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
 	</insert>
 	
 	<update id="SQL_UPDATE_REPLY" parameterType="com.spaceZ.reply.ReplyVO">
