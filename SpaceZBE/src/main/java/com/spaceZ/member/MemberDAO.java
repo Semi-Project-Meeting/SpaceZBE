@@ -1,6 +1,10 @@
 package com.spaceZ.member;
 
+import java.util.List;
+
 import javax.mail.MessagingException;
+
+import com.spaceZ.reservation.ReservationVO;
 
 public interface MemberDAO {
 	

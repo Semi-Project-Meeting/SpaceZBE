@@ -30,13 +30,23 @@
 		select * from member where email=#{email}
 	</select>
 
-
 	<update id="SQL_MEMBER_UPDATE"
 		parameterType="com.spaceZ.member.MemberVO">
 		update member set
 		membername=#{membername},imgname=#{imgname}
 		where memberid=#{memberid}
 	</update>
-
+	
+	<!-- 마이페이지 - 예약 현황 -->
+	<select id="SQL_STATUS_RESERVE"
+		resultType="com.spaceZ.reservation.ReservationVO"> 
+		select * from reservation where memberid=#{memberId} and status = 001 order by reservationid desc
+	</select>
+	
+	<!-- 마이페이지 - 예약 이력 -->
+	<select id="SQL_TOTAL_RESERVE"
+		resultType="com.spaceZ.reservation.ReservationVO"> 
+		select * from reservation where memberid=#{memberId} and status = 002 or status = 001 order by reservationid desc
+	</select>
 
 </mapper>
