@@ -40,6 +40,9 @@ public class MemberDAOimpl implements MemberDAO {
 		logger.info("signUp()...");
 		logger.info("{}", vo);
 		
+		//기본이미지 저장
+		vo.setImgname("img_0001.png");
+		
 		int flag = 0;
 
 		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_EMAIL_CHECK", vo);
