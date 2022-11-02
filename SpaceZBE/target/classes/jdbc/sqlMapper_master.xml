@@ -29,8 +29,7 @@
 	
 	<insert id="SQL_COMPANY_REGISTER"
 		parameterType="com.spaceZ.master.CompanyVO">
-		insert into company(companyid, memberid,company_name)
-		values(seq_manager.nextval,#{memberId},#{company_name})
+		insert into company(companyid, memberid,company_name) values(seq_company.nextval, #{memberId}, (select company_name from manager where memberid = #{memberId}))
 	</insert>
 	
 
