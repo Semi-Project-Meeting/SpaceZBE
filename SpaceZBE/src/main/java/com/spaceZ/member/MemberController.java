@@ -85,6 +85,7 @@ public class MemberController {
 
 		return txt;
 	}
+	
 
 	// 로그아웃
 	@RequestMapping(value = "/member/logout", method = RequestMethod.GET)
