@@ -60,4 +60,13 @@ public class ManagerDAOimpl implements ManagerDAO {
 		return flag;
 	}
 	
+	// 업체 등록하기
+	@Override
+	public int companyRegister(CompanyVO vo) {
+		
+		int flag = sqlSession.insert("SQL_COMPANY_REGISTER",vo);
+		
+		return flag;
+	}
+	
 }
