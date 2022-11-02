@@ -9,6 +9,12 @@
 		join (select min(imagesid) as "IMAGEID", min(spaceid) as "SPACEID", min(imgname) as "IMGNAME" from images group by spaceid) i on a.spaceid = i.spaceid
 	</select>
 	
+	<select id="SQL_SELECT_CAN_RESV_SPACES_2" resultType="com.spaceZ.serviceInfo.SpaceInfoVO" parameterType="com.spaceZ.search.SearchVO">
+		select * from (select s.spaceid as "SPACEID", s.info, s.moreinfo, s.companyid, s.spacename, s.type, s.location, s.price, s.phone_number from space s full outer join reservation r on s.spaceid = r.spaceid 
+		where (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord})) a
+		join (select min(imagesid) as "IMAGEID", min(spaceid) as "SPACEID", min(imgname) as "IMGNAME" from images group by spaceid) i on a.spaceid = i.spaceid
+	</select>
+	
 	<select id="SQL_SELECT_ALL_SPACES" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
 		select * from space s join (select min(imagesid) as "IMAGEID", min(spaceid) as "SPACEID", min(imgname) as "IMGNAME" from images group by spaceid) i on s.spaceid = i.spaceid
 	</select>
