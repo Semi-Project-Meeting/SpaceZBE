@@ -31,9 +31,6 @@ public class MypageController {
 	@Autowired
 	MypageService service;
 
-	@Autowired
-	HttpSession session;
-
 	// 마이페이지 - 예약현황
 	@RequestMapping(value = "/status-reserve", method = RequestMethod.GET)
 	@ResponseBody
