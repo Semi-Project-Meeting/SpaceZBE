@@ -67,8 +67,8 @@ public class MemberDAOimpl implements MemberDAO {
 	}
 
 	@Override
-	public int login(MemberVO vo) {
-		int flag = 0;
+	public long login(MemberVO vo) {
+		long memberid = 0;
 
 		logger.info("login()...");
 
@@ -82,10 +82,10 @@ public class MemberDAOimpl implements MemberDAO {
 			session.setAttribute("companyId", companyId);
 			}
 			session.setAttribute("authority", vo2.getAuthority());
-			flag = 1;
+			memberid = vo2.getMemberid();
 		}
 
-		return flag;
+		return memberid;
 	}
 
 	@Override
