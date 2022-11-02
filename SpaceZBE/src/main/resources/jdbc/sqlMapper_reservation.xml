@@ -18,7 +18,7 @@
 		enddate, status, paystatus, price, prepay, reserve_time, imp_uid, prepay_uid, postpay_uid)
 		values(seq_reservation.nextval,#{spaceId},#{companyId},#{memberId},#{startDate},
 		#{endDate}, 001, #{payStatus}, #{price},
-		#{prepay},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'), #{imp_uid}, #{prepay_uid} , #{postpay_uid}, #{companyid})
+		#{prepay},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'), #{imp_uid}, #{prepay_uid} , #{postpay_uid})
 	</insert>
 
 	<select id="SQL_RESERVE_DUPLICATE"

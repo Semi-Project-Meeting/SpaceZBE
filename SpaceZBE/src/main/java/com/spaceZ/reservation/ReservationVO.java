@@ -42,6 +42,8 @@ public class ReservationVO {
 		this.postpay_uid = postpay_uid;
 	}
 
+	
+	
 	public long getReservationId() {
 		return reservationId;
 	}
@@ -153,6 +155,8 @@ public class ReservationVO {
 	public void setPostpay_uid(String postpay_uid) {
 		this.postpay_uid = postpay_uid;
 	}
+	
+	
 
 	@Override
 	public String toString() {

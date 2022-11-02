@@ -6,8 +6,8 @@
 	<insert id="SQL_MILEAGE_INSERT"
 		parameterType="com.spaceZ.mileage.MileageVO">
 		insert into
-		mileage(mileageid,memberid,spacename,score,mileage_date)
-		values(seq_mileage.nextval,#{memberId},#{spaceName},#{score},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'))
+		mileage(mileageid,memberid,spacename,score,mileage_date,status)
+		values(seq_mileage.nextval,#{memberId},#{spaceName},#{score},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),#{status})
 	</insert>
 
 	<select id="SQL_MILEAGE_SELECTALL"
