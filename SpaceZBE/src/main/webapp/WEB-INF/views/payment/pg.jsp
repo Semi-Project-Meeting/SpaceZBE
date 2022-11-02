@@ -91,7 +91,7 @@
 						imp_uid : rsp.imp_uid,
 						prepay_uid : rsp.merchant_uid,
 						memberId : 1,
-						//companyId : 1,
+						companyId : 1,
 						payStatus : "1",
 						price : 200, //총 결제 금액
 						prepay : "000", //000 : 선결제,001 : 보증금결제,002: 후결제

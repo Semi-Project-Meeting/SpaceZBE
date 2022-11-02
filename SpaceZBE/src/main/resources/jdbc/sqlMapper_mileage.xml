@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaceZ.mileage">
+	<insert id="SQL_MILEAGE_INSERT"
+		parameterType="com.spaceZ.mileage.MileageVO">
+		insert into
+		mileage(mileageid,memberid,spacename,score,mileage_date)
+		values(seq_mileage.nextval,#{memberId},#{spaceName},#{score},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'))
+	</insert>
+
+	<select id="SQL_MILEAGE_SELECTALL"
+		resultType="com.spaceZ.mileage.MileageVO"> 
+		select * from mileage where memberid=#{memberid}
+	</select>
+
+<!-- 	<select id="SQL_MILEAGE_SELECT_ONE" -->
+<!-- 		resultType="com.spaceZ.member.MemberVO">  -->
+<!-- 		select * from mileage where mileageid=#{mileageId} -->
+<!-- 	</select> -->
+
+</mapper>

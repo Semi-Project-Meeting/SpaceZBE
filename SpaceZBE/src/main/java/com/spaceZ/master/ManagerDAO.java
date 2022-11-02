@@ -23,4 +23,7 @@ public interface ManagerDAO {
 	
 	// 관리자 거부 하기 (승인거부로 상태변경) 
 	int disapprove(ManagerVO vo);
+	
+	// 업체 등록하기 
+//	int companyRegister(String memberId);
 }

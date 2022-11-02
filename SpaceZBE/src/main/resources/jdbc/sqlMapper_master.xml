@@ -27,5 +27,10 @@
 		update manager set status = 000 where memberid = #{memberId}
 	</update>
 	
+	<insert id="SQL_COMPANY_REGISTER"
+		parameterType="com.spaceZ.master.CompanyVO">
+		insert into company(companyid, memberid,company_name) values(seq_company.nextval, #{memberId}, (select company_name from manager where memberid = #{memberId}))
+	</insert>
+	
 
 </mapper>

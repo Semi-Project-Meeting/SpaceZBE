@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spaceZ.mileage.MileageService;
+import com.spaceZ.mileage.MileageVO;
 import com.spaceZ.payment.PaymentService;
 import com.spaceZ.payment.RefundVO;
 
@@ -22,6 +24,9 @@ public class ReservationDAOimpl implements ReservationDAO {
 	@Autowired
 	PaymentService paymentService;
 
+	@Autowired
+	MileageService mileageService; 
+	
 	@Override
 	// 예약하기
 	public int reserve(ReservationVO vo) {
@@ -34,6 +39,12 @@ public class ReservationDAOimpl implements ReservationDAO {
 			vo.setPostpay_uid("000");
 			// paystatus: 결제 전 001, 결제 완료 002, 결제 취소 000, 보증금 결제완료 003, 보증금 결제취소 004
 			vo.setPayStatus("002");
+			
+			//마일리지 적립
+			if(flag == 1) {
+				mileageService.insertMileage(vo);
+				logger.info("마일리지 적립 완료");
+			}
 		} else if (vo.getPrepay().equals("001")) {
 			int origin_price = vo.getPrice();
 			flag = paymentService.depositOK(vo);
@@ -48,6 +59,7 @@ public class ReservationDAOimpl implements ReservationDAO {
 		// 결제가 제대로 이루어진다면, DB에 저장
 		if (flag == 1) {
 			flag = sqlSession.insert("SQL_RESERVE", vo);
+			logger.info("예약 저장 완료");
 		}
 
 		return flag;
@@ -81,6 +93,10 @@ public class ReservationDAOimpl implements ReservationDAO {
 			String prepay_uid = vo.getPrepay_uid();
 			paymentService.refund(new RefundVO(prepay_uid, "선결제 결제취소", vo.getPrice(), vo.getMemberId()));
 			vo.setPayStatus("000");
+			
+			//마일리지 취소
+			mileageService.deleteMileage(vo);
+			logger.info("마일리지 취소, 회수 완료");
 		} else {
 
 			// 예약한지 1시간 이내일 때 (전체 환불)
