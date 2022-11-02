@@ -6,8 +6,8 @@
 	<insert id="SQL_MEMBER_INSERT"
 		parameterType="com.spaceZ.member.MemberVO">
 		insert into
-		member(memberid,membername,email,password,authority)
-		values(seq_member.nextval,#{membername},#{email},#{password},#{authority})
+		member(memberid,membername,email,password,authority,imgname)
+		values(seq_member.nextval,#{membername},#{email},#{password},#{authority},#{imgname})
 	</insert>
 
 	<select id="SQL_MEMBER_LOGIN"

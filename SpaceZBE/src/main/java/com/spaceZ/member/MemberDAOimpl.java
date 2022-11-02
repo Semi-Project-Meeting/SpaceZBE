@@ -39,7 +39,7 @@ public class MemberDAOimpl implements MemberDAO {
 	public int signUp(MemberVO vo) {
 		logger.info("signUp()...");
 		logger.info("{}", vo);
-		
+		vo.setImgname("img_0001.png");
 		int flag = 0;
 
 		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_EMAIL_CHECK", vo);
