@@ -45,26 +45,10 @@ public class SearchController {
 		return map;
 	}
 	
-//	@RequestMapping(value="/search", method = RequestMethod.GET)
-//	public String search() {
-//		logger.info("hello search");
-//		
-//		return "search";
-//	}
-	
-	@RequestMapping(value="/test", method = RequestMethod.GET)
-	public String test() {
+	@RequestMapping(value="/searchWithMap", method = RequestMethod.GET)
+	public String search() {
+		logger.info("map search");
 		
-		return "test";
-	}
-	
-	@RequestMapping(value = "/searchAll", method = RequestMethod.GET)
-	@ResponseBody
-	public Map<String, List<SpaceInfoVO>> searchAll() {
-		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
-		List<SpaceInfoVO> vos = service.getAllSpaces();
-		map.put("vos", vos);
-
-		return map;
+		return "search";
 	}
 }
