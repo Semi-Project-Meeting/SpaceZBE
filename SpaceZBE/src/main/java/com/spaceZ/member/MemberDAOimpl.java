@@ -1,5 +1,6 @@
 package com.spaceZ.member;
 
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.mail.MessagingException;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
+import com.spaceZ.reservation.ReservationVO;
 import com.spaceZ.spaceZBE.ImageFAO;
 
 @Repository
@@ -30,8 +32,7 @@ public class MemberDAOimpl implements MemberDAO {
 
 	@Autowired
 	JavaMailSender javaMailSender;
-	
-	
+
 	@Autowired
 	ImageFAO fao;
 
@@ -39,28 +40,28 @@ public class MemberDAOimpl implements MemberDAO {
 	public int signUp(MemberVO vo) {
 		logger.info("signUp()...");
 		logger.info("{}", vo);
-		
+
 		int flag = 0;
 
 		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_EMAIL_CHECK", vo);
-		if(vo2==null) {
+		if (vo2 == null) {
 			flag = sqlSession.insert("SQL_MEMBER_INSERT", vo);
 		}
 		session.removeAttribute("certificationNum");
 
 		return flag;
 	}
-	
+
 	@Override
 	public int update(MemberVO vo) {
 		logger.info("update()...");
 		logger.info("{}", vo);
-		
-		//image 이름 추출 및 파일 업로드
+
+		// image 이름 추출 및 파일 업로드
 		String imgname = fao.getImageName(vo.getMultipartFile());
 		vo.setImgname(imgname);
 		logger.info("이미지저장 후 vo:{}", vo);
-		
+
 		int flag = sqlSession.update("SQL_MEMBER_UPDATE", vo);
 
 		return flag;
@@ -76,10 +77,10 @@ public class MemberDAOimpl implements MemberDAO {
 
 		if (vo2 != null) {
 			session.setAttribute("memberid", vo2.getMemberid());
-			if(vo2.getAuthority().equals("manager")) {
+			if (vo2.getAuthority().equals("manager")) {
 				long companyId = sqlSession.selectOne("SQL_COMPANY_SELECT_ONE", vo2);
-				logger.info("companyid:{}",companyId);
-			session.setAttribute("companyId", companyId);
+				logger.info("companyid:{}", companyId);
+				session.setAttribute("companyId", companyId);
 			}
 			session.setAttribute("authority", vo2.getAuthority());
 			memberid = vo2.getMemberid();
@@ -93,11 +94,11 @@ public class MemberDAOimpl implements MemberDAO {
 		int flag = 1;
 
 		logger.info("idCheck()...");
-		logger.info("vo:{}",vo);
+		logger.info("vo:{}", vo);
 
 		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_EMAIL_CHECK", vo);
 		logger.info("vo2:{}", vo2);
-		
+
 		if (vo2 != null) {
 			flag = 0;
 		}
