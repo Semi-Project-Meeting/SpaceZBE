@@ -76,6 +76,11 @@ public class MemberDAOimpl implements MemberDAO {
 
 		if (vo2 != null) {
 			session.setAttribute("memberid", vo2.getMemberid());
+			if(vo2.getAuthority().equals("manager")) {
+				long companyId = sqlSession.selectOne("SQL_COMPANY_SELECT_ONE", vo2);
+				logger.info("companyid:{}",companyId);
+			session.setAttribute("companyId", companyId);
+			}
 			session.setAttribute("authority", vo2.getAuthority());
 			flag = 1;
 		}

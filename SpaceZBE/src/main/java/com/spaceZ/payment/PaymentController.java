@@ -1,11 +1,9 @@
 package com.spaceZ.payment;
 
-import java.util.Arrays;
 import java.util.Locale;
-import java.util.stream.Stream;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +25,19 @@ public class PaymentController {
 	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
 
 	@Autowired
-	PaymentDAOimpl dao;
+	PaymentService service;
+
+	@Autowired
+	HttpSession session;
 
 	// 결제 상세페이지 -> 창현님과 합칠 부분
 	@RequestMapping(value = "/selectOne", method = RequestMethod.GET)
-	public String selectOne(Locale locale, Model model) {
+	public String pay(Locale locale, Model model) {
 
 		// 주문번호 고유값 설정 위해, 난수생성 -> 이것은 공간 등록 시 생성되어 추가되어야 한다.
-		char random_alphabet = (char) ((int) (Math.random() * 25) + 65);
-		long millis = System.currentTimeMillis();
+		char random_alphabet = (char) ((Math.random() * 26) + 97);
 		// merchant_uid : 고유값 -> 프론트에서 받아서 결제완료 버튼 클릭 시, VO Data로 다시 넘어와야 함.
-		String merchant_uid = String.valueOf(random_alphabet) + millis;
+		String merchant_uid = String.valueOf(random_alphabet) + System.currentTimeMillis();
 		logger.info("merchantid:{}", merchant_uid);
 
 		model.addAttribute("merchant_uid", merchant_uid);
@@ -45,28 +45,62 @@ public class PaymentController {
 		return "payment/pg";
 	}
 
-	// 결제완료 버튼 클릭 -> 현민님과 합칠 부분
-	@RequestMapping(value = "/payOK", method = RequestMethod.GET)
-	public String payOK(Locale locale, Model model) {
+	// 선결제, 결제완료 버튼 클릭 -> 현민님과 합칠 부분
+	@RequestMapping(value = "/payOK", method = RequestMethod.POST, produces = "application/json; charset=utf8")
+	@ResponseBody
+	public int prepayOK(@RequestBody ReservationVO vo) {
 		// 매개변수값으로 imp_uid, merchant_uid가 들어와야한다.
-		ReservationVO vo = new ReservationVO();
 		vo.setSpaceId(1L);
-		logger.info("VO:{}",vo);
+		logger.info("VO:{}", vo);
 
-		System.out.println(dao.verifyPayInfo("imp_437085566506", vo.getSpaceId()));
+		int flag = service.verifyPayInfo(vo);
+		logger.info("result: {}", flag);
 
-		return "payment/pg";
+		return flag;
+	}
+	
+//	// 보증금 결제, 결제완료 버튼 클릭 -> 현민님과 합칠 부분
+	@RequestMapping(value = "/depositOK", method = RequestMethod.POST)
+	@ResponseBody
+	public int depositOK(@RequestBody ReservationVO vo) {
+		// 매개변수값으로 imp_uid, merchant_uid가 들어와야한다.
+		logger.info("VO:{}", vo);
+		
+//		int flag = service.verifyPayInfo(vo);
+//		logger.info("result: {}", flag);
+		
+		int flag = service.depositOK(vo);
+		logger.info("depositOK result: {}", flag);
+//		
+//		ReservationVO vo2 = service.reserve(vo);
+//		logger.info("reserve result: {}", vo2);
+		
+		return 1;
+	}
+
+//	// 보증금 결제, 결제완료 버튼 클릭 -> 현민님과 합칠 부분
+	@RequestMapping(value = "/reservePayOK", method = RequestMethod.POST)
+	@ResponseBody
+	public int reservePayOK(@RequestBody ReservationVO vo) {
+		// 매개변수값으로 imp_uid, merchant_uid가 들어와야한다.
+		vo.setSpaceId(1L);
+		logger.info("VO:{}", vo);
+		
+		int flag = service.reserve(vo);
+		logger.info("result: {}", flag);
+		
+		return flag;
 	}
 	
 	// 결제취소 버튼 클릭 -> 현민님과 합칠 부분
 	@RequestMapping(value = "/refund", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	public String refund(@RequestBody RefundVO vo) {
 		// 매개변수값으로 imp_uid, merchant_uid가 들어와야한다.
-		//vo.setSpaceId(1L);
-		logger.info("VO:{}",vo);
-		
-		System.out.println(dao.refund(vo));
-		
+		// vo.setSpaceId(1L);
+		logger.info("VO:{}", vo);
+
+		System.out.println(service.refund(vo));
+
 		return "payment/pg";
 	}
 

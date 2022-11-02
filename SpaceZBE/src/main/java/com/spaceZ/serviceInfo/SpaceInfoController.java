@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spaceZ.payment.PaymentDAOimpl;
 import com.spaceZ.qna.QnaVO;
 import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
@@ -25,6 +26,9 @@ public class SpaceInfoController {
 	
 	@Autowired
 	SpaceInfoService service;
+	
+	@Autowired
+	PaymentDAOimpl dao;
 	
 	private static final Logger logger = LoggerFactory.getLogger(SpaceInfoController.class);
 	
@@ -46,6 +50,7 @@ public class SpaceInfoController {
 		map.put("replys", replys);
 		map.put("reviews", reviews);
 		map.put("qnas", qnas);
+		map.put("merchant_uid", dao.getRanStr());
 		return map;
 	}
 	
