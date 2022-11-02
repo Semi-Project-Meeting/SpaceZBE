@@ -321,7 +321,7 @@ public class PaymentDAOimpl implements PaymentDAO {
 				json.addProperty("amount", vo.getCancel_request_amount()); // 가맹점 클라이언트로부터 받은 환불금액
 //			json.addProperty("checksum", vo.getCancel_request_amount()); // [권장] 환불 가능 금액 입력
 			}
-			
+
 			conn = (HttpsURLConnection) url.openConnection();
 
 			conn.setRequestMethod("POST");
@@ -330,7 +330,7 @@ public class PaymentDAOimpl implements PaymentDAO {
 			conn.setRequestProperty("Accept", "application/json");
 			conn.setRequestProperty("Authorization", token);
 			conn.setDoOutput(true);
-			
+
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 
 			bw.write(json.toString());
@@ -445,6 +445,15 @@ public class PaymentDAOimpl implements PaymentDAO {
 		// merchant_uid : 고유값 -> 프론트에서 받아서 결제완료 버튼 클릭 시, VO Data로 다시 넘어와야 함.
 		String merchant_uid = String.valueOf(random_alphabet) + System.currentTimeMillis();
 		logger.info("merchantid:{}", merchant_uid);
+		return merchant_uid;
+	}
+
+	@Override
+	public String getMercant_uid() {
+		// 주문번호 고유값 설정 위해, 난수생성 -> 이것은 공간 등록 시 생성되어 추가되어야 한다.
+		char random_alphabet = (char) ((Math.random() * 26) + 97);
+		// merchant_uid : 고유값 -> 프론트에서 받아서 결제완료 버튼 클릭 시, VO Data로 다시 넘어와야 함.
+		String merchant_uid = String.valueOf(random_alphabet) + System.currentTimeMillis();
 		return merchant_uid;
 	}
 

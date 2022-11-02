@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spaceZ.payment.PaymentDAOimpl;
+import com.spaceZ.payment.PaymentService;
 import com.spaceZ.qna.QnaVO;
 import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
@@ -30,6 +31,9 @@ public class SpaceInfoController {
 	
 	@Autowired
 	PaymentDAOimpl dao;
+	
+	@Autowired
+	PaymentService paymentService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(SpaceInfoController.class);
 
@@ -66,6 +70,8 @@ public class SpaceInfoController {
 		if(images != null) {
 			map.put("images", images);
 		}
+		
+		map.put("merchant_uid", paymentService.getMerchant_uid());
 		
 		return map;
 	}
