@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.spaceZ.payment.PaymentDAOimpl;
 import com.spaceZ.qna.QnaVO;
 import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
@@ -26,7 +27,10 @@ public class SpaceInfoController {
 
 	@Autowired
 	SpaceInfoService service;
-
+	
+	@Autowired
+	PaymentDAOimpl dao;
+	
 	private static final Logger logger = LoggerFactory.getLogger(SpaceInfoController.class);
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -46,6 +50,7 @@ public class SpaceInfoController {
 		Map map = new HashMap();
 
 		map.put("space", vo);
+		
 		if(avgRating != -1) {
 			map.put("avgRating", avgRating);
 		}

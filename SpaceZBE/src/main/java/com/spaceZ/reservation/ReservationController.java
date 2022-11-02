@@ -32,7 +32,10 @@ public class ReservationController {
 		
 		List<ReservationVO> vos = service.duplicate(vo);
 		if(vos.size()==0) {
-			service.reserve(vo);
+			int result = service.reserve(vo);
+			if(result == 0) {
+				txt = "{\"result\": 결제 및 예약에 실패하였습니다.}";
+			}
 		} else if(vos.size() != 0) {
 			txt = "{\"result\": 중복된 예약이 있습니다.}";
 		}

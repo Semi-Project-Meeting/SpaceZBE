@@ -20,7 +20,7 @@ public class MemberService {
 		return dao.signUp(vo);
 	}
 
-	public int login(MemberVO vo) {
+	public long login(MemberVO vo) {
 		logger.info("login...");
 		return dao.login(vo);
 	}

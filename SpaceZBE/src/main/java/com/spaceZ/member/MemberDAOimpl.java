@@ -67,8 +67,8 @@ public class MemberDAOimpl implements MemberDAO {
 	}
 
 	@Override
-	public int login(MemberVO vo) {
-		int flag = 0;
+	public long login(MemberVO vo) {
+		long memberid = 0;
 
 		logger.info("login()...");
 
@@ -76,11 +76,16 @@ public class MemberDAOimpl implements MemberDAO {
 
 		if (vo2 != null) {
 			session.setAttribute("memberid", vo2.getMemberid());
+			if(vo2.getAuthority().equals("manager")) {
+				long companyId = sqlSession.selectOne("SQL_COMPANY_SELECT_ONE", vo2);
+				logger.info("companyid:{}",companyId);
+			session.setAttribute("companyId", companyId);
+			}
 			session.setAttribute("authority", vo2.getAuthority());
-			flag = 1;
+			memberid = vo2.getMemberid();
 		}
 
-		return flag;
+		return memberid;
 	}
 
 	@Override

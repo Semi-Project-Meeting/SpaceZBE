@@ -75,11 +75,11 @@ public class MemberController {
 		logger.info("login..");
 		logger.info("vo : {}", vo);
 
-		String txt = "{\"result\": OK}";
 
-		int result = service.login(vo);
+		long memberid = service.login(vo);
+		String txt = "{\"member_id\": "+memberid+"}";
 
-		if (result == 0) {
+		if (memberid == 0) {
 			txt = "{\"result\": 로그인 실패.}";
 		}
 

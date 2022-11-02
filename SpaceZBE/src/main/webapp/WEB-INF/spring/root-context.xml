@@ -47,10 +47,17 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- -1 : 허용범주 안에서 최대크기 -->
 		<property name="maxUploadSize" value="-1"></property>
 	</bean>
+
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
 </beans>

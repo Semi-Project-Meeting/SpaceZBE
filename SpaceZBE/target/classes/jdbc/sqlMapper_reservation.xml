@@ -14,11 +14,11 @@
 
 	<insert id="SQL_RESERVE"
 		parameterType="com.spaceZ.reservation.ReservationVO">
-		insert into reservation(reservationid, companyid, spaceid, memberid, startdate,
-		enddate, status, paystatus, price, prepay, reserve_time)
-		values(seq_reservation.nextval,#{companyId},#{spaceId},#{memberId},#{startDate},
+		insert into reservation(reservationid, spaceid, memberid, startdate,
+		enddate, status, paystatus, price, prepay, reserve_time, imp_uid, prepay_uid, postpay_uid)
+		values(seq_reservation.nextval,#{spaceId},#{memberId},#{startDate},
 		#{endDate}, 001, #{payStatus}, #{price},
-		#{prepay},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'))
+		#{prepay},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'), #{imp_uid}, #{prepay_uid}, #{postpay_uid})
 	</insert>
 
 	<select id="SQL_RESERVE_DUPLICATE"
@@ -26,18 +26,24 @@
 		select reservationid from reservation <![CDATA[where #{startDate} <= enddate and #{endDate} >= startdate and spaceid = #{spaceId} and status = 001]]>
 	</select>
 
+	<select id="SQL_RESERVE_ONE"
+		resultType="com.spaceZ.reservation.ReservationVO">
+		select * from reservation where reservationid=#{reservationId}
+	</select>
+
 	<select id="SQL_RESERVE_TIME"
 		resultType="float">
 		select (TO_DATE(TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),'YYYY-MM-DD HH24:MI') - TO_DATE(reserve_time,'YYYY-MM-DD HH24:MI'))*24 from reservation where reservationid=#{reservationId}
 	</select>
 
-	<delete id="SQL_RESERVE_CANCEL"
+	<update id="SQL_RESERVE_CANCEL"
 		parameterType="com.spaceZ.reservation.ReservationVO">
-		update reservation set status = 002 where reservationid=#{reservationId}
-	</delete>
+		update reservation set status = '002', paystatus=#{payStatus} where reservationid=#{reservationId}
+	</update>
 	
 	<select id="SQL_BACKOFFICE_SELECT_ALL" resultType="com.spaceZ.reservation.ReservationVO">
 	 	select * from reservation where companyid = #{companyId} order by reservationid desc 
 	</select>
+
 
 </mapper>
