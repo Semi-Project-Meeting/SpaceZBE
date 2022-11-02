@@ -20,4 +20,14 @@ public class QnaDAOimpl implements QnaDAO {
 		return sqlSession.update("SQL_ANSWER_QNA", vo);
 	}
 
+	@Override
+	public int deleteQna(QnaVO vo) {
+		return sqlSession.delete("SQL_DELETE_QNA", vo);
+	}
+
+	@Override
+	public int deleteAnswer(QnaVO vo) {
+		return sqlSession.delete("SQL_DELETE_ANSWER", vo);
+	}
+
 }

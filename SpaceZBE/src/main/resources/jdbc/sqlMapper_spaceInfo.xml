@@ -3,53 +3,64 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spaceZ.serviceInfo">
-  <select id="SQL_SELECT_ONE" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
-    select * from space where spaceid=#{spaceId}
-  </select>
-  
-  <select id="SQL_GET_RATING" resultType="double">
-  	select round(avg(rating), 1) from review where spaceid = #{spaceId}
-  </select>
-  
-  <select id="SQL_GET_REPLYS" resultType="com.spaceZ.reply.ReplyVO">
-  	select * from reply where spaceid = #{spaceId} order by replydate desc
-  </select>
-  
-  <select id="SQL_GET_REVIEWS" resultType="com.spaceZ.review.ReviewVO">
-  	select * from review where spaceid = #{spaceId} order by reviewdate desc
-  </select>
-  
-  <select id="SQL_GET_QNAS" resultType="com.spaceZ.qna.QnaVO">
-  	select * from qna where spaceid = #{spaceId} order by qnadate desc
-  </select>
-  
-<!--   <select id="SQL_SELECT_ONE" resultType="test.com.mybatis.MemberVO"> -->
-<!--   	select * from member where num=#{num} -->
-<!--   </select> -->
-  
-<!--   <select id="SQL_SEARCH_LIST_TEL" resultType="test.com.mybatis.MemberVO" parameterType="hashmap"> -->
-<!--   	select * from member where tel like #{searchWord} order by num desc -->
-<!--   </select> -->
-  
-<!--   <select id="SQL_SEARCH_LIST" resultType="test.com.mybatis.MemberVO" parameterType="hashmap"> -->
-<!--   	select * from member -->
-<!--   	<if test="searchKey == 'name'"> -->
-<!--   		where name like #{searchWord} order by num desc -->
-<!--   	</if> -->
-<!--   	<if test="searchKey == 'tel'"> -->
-<!--   		where tel like #{searchWord} order by num desc -->
-<!--   	</if> -->
-<!--   </select> -->
-  
-<!--   <insert id="SQL_INSERT" parameterType="test.com.mybatis.MemberVO"> -->
-<!--   	insert into member(num,id,pw,name,tel) values(seq_member.nextval,#{id},#{pw},#{name},#{tel}) -->
-<!--   </insert> -->
-  
-<!--   <update id="SQL_UPDATE" parameterType="test.com.mybatis.MemberVO"> -->
-<!--   	update member set id=#{id},pw=#{pw},name=#{name},tel=#{tel} where num=#{num} -->
-<!--   </update> -->
-  
-<!--   <delete id="SQL_DELETE" parameterType="test.com.mybatis.MemberVO"> -->
-<!--   	delete from member where num=#{num} -->
-<!--   </delete> -->
+	<select id="SQL_SELECT_ONE"
+		resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select * from space where spaceid=#{spaceId}
+	</select>
+
+	<select id="SQL_GET_RATING" resultType="double">
+		select round(avg(rating), 1) from review where spaceid = #{spaceId}
+	</select>
+
+	<select id="SQL_GET_REPLYS"
+		resultType="com.spaceZ.reply.ReplyVO">
+		select * from reply where spaceid = #{spaceId} order by replydate desc
+	</select>
+
+	<select id="SQL_GET_REVIEWS"
+		resultType="com.spaceZ.review.ReviewVO">
+		select * from review where spaceid = #{spaceId} order by reviewdate desc
+	</select>
+
+	<select id="SQL_GET_QNAS" resultType="com.spaceZ.qna.QnaVO">
+		select * from qna where spaceid = #{spaceId} order by qnadate desc
+	</select>
+	
+	<!-- 다중 이미지 출력 -->
+	<select id="SQL_GET_IMAGES" resultType="com.spaceZ.serviceInfo.ImagesVO">
+		select * from images where spaceid = #{spaceId} order by imagesid desc
+	</select>
+	
+	<select id="SQL_SPACEID" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select seq_space.nextval as spaceid from dual
+	</select>
+	
+	<insert id="SQL_SPACE_INSERT" 
+		parameterType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		insert into space(spaceid, companyid, spacename, info,
+		moreinfo, type , location, price , phone_number)
+		values(#{spaceId},#{companyId},#{spaceName}, #{info},
+		#{moreInfo},#{type},#{location},#{price},#{phone_number})
+	</insert>
+	
+	<insert id="SQL_IMAGE_INSERT"
+		parameterType="com.spaceZ.serviceInfo.ImagesVO">
+		insert into images (imagesid, spaceid, imgname) values(seq_images.nextval,#{spaceId},#{imgName})
+	</insert>
+
+	<update id="SQL_SPACE_UPDATE"
+		parameterType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		update space set spacename=#{spaceName}, info=#{info},
+		moreinfo=#{moreInfo}, imgname=#{imgName}, type=#{type},
+		location=#{location}, price=#{price}, phone_number=#{phone_number}
+		where spaceid = #{spaceId}
+	</update>
+	
+	<select id="SQL_RECENTLY_ADDED" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select * from space where <![CDATA[rownum <= 5 order by spaceid desc]]>
+	</select>
+	
+	<select id="SQL_RECOMMENDED_SPACE" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
+		select * from space s left join (select spaceid from review group by spaceid order by avg(rating) desc) r on s.spaceid = r.spaceid where r.spaceid is not null and <![CDATA[rownum <= 5]]>
+	</select>
 </mapper>

@@ -13,4 +13,12 @@ public class ReplyService {
 		return dao.insert(vo);
 	}
 
+	public int update(ReplyVO vo) {
+		return dao.update(vo);
+	}
+
+	public int delete(ReplyVO vo) {
+		return dao.delete(vo);
+	}
+
 }

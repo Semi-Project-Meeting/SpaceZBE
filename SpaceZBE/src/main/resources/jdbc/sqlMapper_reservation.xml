@@ -23,7 +23,7 @@
 
 	<select id="SQL_RESERVE_DUPLICATE"
 		resultType="com.spaceZ.reservation.ReservationVO">
-		select reservationid from reservation <![CDATA[where #{startDate} <= enddate and #{endDate} >= startdate]]>
+		select reservationid from reservation <![CDATA[where #{startDate} <= enddate and #{endDate} >= startdate and spaceid = #{spaceId} and status = 001]]>
 	</select>
 
 	<select id="SQL_RESERVE_ONE"
@@ -40,5 +40,10 @@
 		parameterType="com.spaceZ.reservation.ReservationVO">
 		update reservation set status = '002', paystatus=#{payStatus} where reservationid=#{reservationId}
 	</update>
+	
+	<select id="SQL_BACKOFFICE_SELECT_ALL" resultType="com.spaceZ.reservation.ReservationVO">
+	 	select * from reservation where companyid = #{companyId} order by reservationid desc 
+	</select>
+
 
 </mapper>

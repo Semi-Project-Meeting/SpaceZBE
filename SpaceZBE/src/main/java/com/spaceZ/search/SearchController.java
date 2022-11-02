@@ -23,14 +23,25 @@ public class SearchController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SearchController.class);
 	
-	@RequestMapping(value="/search", method = RequestMethod.POST)
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, List<SpaceInfoVO>> search(@RequestBody SearchVO vo) {
-		vo.setSearchWord("%" + vo.getSearchWord() +"%");
+		vo.setSearchWord("%" + vo.getSearchWord() + "%");
 		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
 		List<SpaceInfoVO> vos = service.getCanResvSpaces(vo);
 		map.put("vos", vos);
-		
+
+		return map;
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, List<SpaceInfoVO>> searchGet(SearchVO vo) {
+		vo.setSearchWord("%" + vo.getSearchWord() + "%");
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		List<SpaceInfoVO> vos = service.getCanResvSpaces(vo);
+		map.put("vos", vos);
+
 		return map;
 	}
 	
@@ -40,4 +51,20 @@ public class SearchController {
 //		
 //		return "search";
 //	}
+	
+	@RequestMapping(value="/test", method = RequestMethod.GET)
+	public String test() {
+		
+		return "test";
+	}
+	
+	@RequestMapping(value = "/searchAll", method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String, List<SpaceInfoVO>> searchAll() {
+		Map<String, List<SpaceInfoVO>> map = new HashMap<String, List<SpaceInfoVO>>();
+		List<SpaceInfoVO> vos = service.getAllSpaces();
+		map.put("vos", vos);
+
+		return map;
+	}
 }

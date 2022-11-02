@@ -16,4 +16,8 @@ public class SearchService {
 		return dao.getCanResvSpaces(vo);
 	}
 
+	public List<SpaceInfoVO> getAllSpaces() {
+		return dao.getAllSpaces();
+	}
+
 }

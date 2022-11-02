@@ -20,4 +20,17 @@ public interface SpaceInfoDAO {
 	public List<ReviewVO> getReviews(long spaceId);
 
 	public List<QnaVO> getQnas(long spaceId);
+	
+	// 사무공간 상세페이지 다중 이미지 출력
+	public List<ImagesVO> getImages(long spaceId);
+	
+	// 사무공간 등록 (백오피스)
+	public int insertSpace(SpaceInfoVO vo);
+	
+	// 사무공간 수정 (백오피스)
+	public int updateSpace(SpaceInfoVO vo);
+
+	public List<SpaceInfoVO> recentlyAdded();
+
+	public List<SpaceInfoVO> recommendedSpace();
 }

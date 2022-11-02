@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spaceZ.master">
+
+	<insert id="SQL_MANAGER_APPLY"
+		parameterType="com.spaceZ.master.ManagerVO">
+		insert into manager(managerid, memberid,company_name,status)
+		values(seq_manager.nextval,#{memberId},#{company_name},001)
+	</insert>
+
+	<select id="SQL_MANAGER_SELECT_ALL"
+		resultType="com.spaceZ.master.ManagerVO">
+		select * from manager where status = 001 order by managerid desc
+	</select>
+	
+	<update id="SQL_APPROVE_STATUS" parameterType="com.spaceZ.master.ManagerVO">
+		update manager set status = 002 where memberid = #{memberId}
+	</update>
+	
+	<update id="SQL_PROMOTE_AUTHORITY" parameterType="com.spaceZ.master.ManagerVO">
+		update member set authority = 'manager' where memberid = #{memberId}
+	</update>
+	
+	<update id="SQL_DISAPPROVE_STATUS" parameterType="com.spaceZ.master.ManagerVO">
+		update manager set status = 000 where memberid = #{memberId}
+	</update>
+	
+
+</mapper>

@@ -19,4 +19,9 @@ public class SearchDAOimpl implements SearchDAO {
 		return sqlSession.selectList("SQL_SELECT_CAN_RESV_SPACES", vo);
 	}
 
+	@Override
+	public List<SpaceInfoVO> getAllSpaces() {
+		return sqlSession.selectList("SQL_SELECT_ALL_SPACES");
+	}
+
 }
