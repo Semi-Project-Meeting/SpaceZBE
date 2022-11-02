@@ -16,5 +16,7 @@ public interface PaymentDAO {
 	public int verifyPayInfo(ReservationVO vo);
 	//예약 취소 시 환불
 	public int refund(RefundVO vo);
+	//구매번호
+	public String getMercant_uid();
 	
 }
