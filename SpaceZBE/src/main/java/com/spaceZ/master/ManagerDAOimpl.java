@@ -38,6 +38,11 @@ public class ManagerDAOimpl implements ManagerDAO {
 	@Override
 	public int approve(ManagerVO vo) {
 		
+		// 먼저 업체 등록하기 
+		int company = companyRegister(vo.memberId);
+		if(company == 0) {
+			logger.info("업체 등록 안됨.");
+		}
 		int flag = sqlSession.update("SQL_APPROVE_STATUS",vo);
 		
 		return flag;
@@ -61,10 +66,9 @@ public class ManagerDAOimpl implements ManagerDAO {
 	}
 	
 	// 업체 등록하기
-	@Override
-	public int companyRegister(CompanyVO vo) {
+	public int companyRegister(long memberId) {
 		
-		int flag = sqlSession.insert("SQL_COMPANY_REGISTER",vo);
+		int flag = sqlSession.insert("SQL_COMPANY_REGISTER",memberId);
 		
 		return flag;
 	}

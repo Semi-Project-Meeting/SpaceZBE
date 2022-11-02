@@ -25,5 +25,5 @@ public interface ManagerDAO {
 	int disapprove(ManagerVO vo);
 	
 	// 업체 등록하기 
-	int companyRegister(CompanyVO vo);
+//	int companyRegister(String memberId);
 }
