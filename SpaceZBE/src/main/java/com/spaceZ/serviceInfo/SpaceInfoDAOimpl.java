@@ -71,11 +71,15 @@ public class SpaceInfoDAOimpl implements SpaceInfoDAO {
 		ImagesVO imgvo = new ImagesVO();
 		
 		String imgName = "";
+		int i = 0;
 		for (MultipartFile data : multipartFiles) {
 			imgName = fao.getImageName(data);
+			if(i == 0) {
+				vo.setImgName(imgName);
+			}
 			imgvo.setImgName(imgName);
 			imgvo.setSpaceId(vo.getSpaceId());
-			
+			i++;
 			sqlSession.insert("SQL_IMAGE_INSERT",imgvo);
 		}
 		

@@ -33,9 +33,9 @@
 	<insert id="SQL_SPACE_INSERT" 
 		parameterType="com.spaceZ.serviceInfo.SpaceInfoVO">
 		insert into space(spaceid, companyid, spacename, info,
-		moreinfo, type , location, price , phone_number)
+		moreinfo, type , location, price , phone_number, imgname)
 		values(#{spaceId},#{companyId},#{spaceName}, #{info},
-		#{moreInfo},#{type},#{location},#{price},#{phone_number})
+		#{moreInfo},#{type},#{location},#{price},#{phone_number},#{imgName})
 	</insert>
 	
 	<insert id="SQL_IMAGE_INSERT"
@@ -52,12 +52,10 @@
 	</update>
 	
 	<select id="SQL_RECENTLY_ADDED" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
-		<![CDATA[select * from space s join (select min(imagesid) as "IMAGEID", min(spaceid) as "SPACEID", min(imgname) as "IMGNAME" from images group by spaceid) i on s.spaceid = i.spaceid  where  rownum <= 5 order by s.spaceid desc]]>
+		select * from space where <![CDATA[rownum <= 5 order by spaceid desc]]>
 	</select>
 	
 	<select id="SQL_RECOMMENDED_SPACE" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
-		<![CDATA[select * from (select s.spaceid as "SPACEID", s.info, s.moreinfo, s.companyid, s.spacename, s.type, s.location, s.price, s.phone_number from space s left join (select spaceid as "SPACEID" from review group by spaceid order by avg(rating) desc) r on s.spaceid = r.spaceid where r.spaceid is not null and rownum <= 5) l
-		join (select min(imagesid) as "IMAGEID", min(spaceid) as "SPACEID", min(imgname) as "IMGNAME" from images group by spaceid) k
-		on l.spaceid = k.spaceid]]>
+		select * from space s left join (select spaceid from review group by spaceid order by avg(rating) desc) r on s.spaceid = r.spaceid where r.spaceid is not null and <![CDATA[rownum <= 5]]>
 	</select>
 </mapper>
