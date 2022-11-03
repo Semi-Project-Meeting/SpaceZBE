@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spaceZ.qna.QnaVO;
-import com.spaceZ.reply.ReplyVO;
 import com.spaceZ.review.ReviewVO;
 
 @Service
@@ -25,10 +24,6 @@ public class SpaceInfoService {
 
 	public double getRating(long spaceId) {
 		return dao.getRating(spaceId);
-	}
-
-	public List<ReplyVO> getReplys(long spaceId) {
-		return dao.getReplys(spaceId);
 	}
 
 	public List<ReviewVO> getReviews(long spaceId) {

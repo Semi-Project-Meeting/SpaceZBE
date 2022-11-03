@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spaceZ.review">
 	<insert id="SQL_INSERT_REVIEW" parameterType="com.spaceZ.review.ReviewVO">
-		insert into review(reviewid, spaceid, memberid, content, rating, reviewdate) values(seq_review.nextval,#{spaceId},#{memberId},#{content},#{rating}, #{reviewDate})
+		insert into review(reviewid, spaceid, memberid, content, rating, reviewdate) values(seq_review.nextval,#{spaceId},#{memberId},#{content},#{rating}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
 	</insert>
 	
 	<update id="SQL_UPDATE_REVIEW" parameterType="com.spaceZ.review.ReviewVO">

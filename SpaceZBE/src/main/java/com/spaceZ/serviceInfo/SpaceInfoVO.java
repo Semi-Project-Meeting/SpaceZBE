@@ -25,6 +25,21 @@ public class SpaceInfoVO {
 		this.spaceId = space_id;
 	}
 
+	public SpaceInfoVO(long spaceId, long companyId, String spaceName, String info, String moreInfo, String type,
+			String location, int price, String phone_number, String imgName, List<MultipartFile> multipartFiles) {
+		this.spaceId = spaceId;
+		this.companyId = companyId;
+		this.spaceName = spaceName;
+		this.info = info;
+		this.moreInfo = moreInfo;
+		this.type = type;
+		this.location = location;
+		this.price = price;
+		this.phone_number = phone_number;
+		this.imgName = imgName;
+		this.multipartFiles = multipartFiles;
+	}
+
 	public long getSpaceId() {
 		return spaceId;
 	}
@@ -114,29 +129,6 @@ public class SpaceInfoVO {
 	}
 
 	@Override
-	public String toString() {
-		return "SpaceInfoVO [spaceId=" + spaceId + ", companyId=" + companyId + ", spaceName=" + spaceName + ", info="
-				+ info + ", moreInfo=" + moreInfo + ", type=" + type + ", location=" + location + ", price=" + price
-				+ ", phone_number=" + phone_number + ", imgName=" + imgName + ", multipartFiles=" + multipartFiles
-				+ "]";
-	}
-
-	public SpaceInfoVO(long spaceId, long companyId, String spaceName, String info, String moreInfo, String type,
-			String location, int price, String phone_number, String imgName, List<MultipartFile> multipartFiles) {
-		this.spaceId = spaceId;
-		this.companyId = companyId;
-		this.spaceName = spaceName;
-		this.info = info;
-		this.moreInfo = moreInfo;
-		this.type = type;
-		this.location = location;
-		this.price = price;
-		this.phone_number = phone_number;
-		this.imgName = imgName;
-		this.multipartFiles = multipartFiles;
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -212,6 +204,15 @@ public class SpaceInfoVO {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "SpaceInfoVO [spaceId=" + spaceId + ", companyId=" + companyId + ", spaceName=" + spaceName + ", info="
+				+ info + ", moreInfo=" + moreInfo + ", type=" + type + ", location=" + location + ", price=" + price
+				+ ", phone_number=" + phone_number + ", imgName=" + imgName + ", multipartFiles=" + multipartFiles
+				+ "]";
+	}
+
+	
 	
 
 	

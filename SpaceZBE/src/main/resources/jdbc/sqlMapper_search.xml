@@ -4,9 +4,14 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spaceZ.search">
 	<select id="SQL_SELECT_CAN_RESV_SPACES" resultType="com.spaceZ.serviceInfo.SpaceInfoVO" parameterType="com.spaceZ.search.SearchVO">
-		select * from (select s.spaceid, s.info, s.moreinfo, s.companyid, s.spacename, s.type, s.location, s.price, s.phone_number from space s full outer join reservation r on s.spaceid = r.spaceid 
-		where (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord}) and <![CDATA[((#{searchTime} < r.startdate or #{searchTime} > r.enddate) or r.reservationid is null)]]>) a
-		join (select min(imagesid) as "IMAGEID", min(spaceid) as "SPACEID", min(imgname) as "IMGNAME" from images group by spaceid) i on a.spaceid = i.spaceid
+		<![CDATA[select * from space 
+		where spaceid not in (select s.spaceid from space s join reservation r on s.spaceid = r.spaceid where (#{searchTime} >= r.startdate and #{searchTime} <= r.enddate)) 
+		and (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord})]]>
+	</select>
+	
+	<select id="SQL_SELECT_CAN_RESV_SPACES_2" resultType="com.spaceZ.serviceInfo.SpaceInfoVO" parameterType="com.spaceZ.search.SearchVO">
+		select spaceid, companyid, spacename, imgname, type, location, price from space 
+		where (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord})
 	</select>
 	
 	<select id="SQL_SELECT_ALL_SPACES" resultType="com.spaceZ.serviceInfo.SpaceInfoVO">
