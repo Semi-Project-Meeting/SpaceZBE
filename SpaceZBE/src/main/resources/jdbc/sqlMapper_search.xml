@@ -6,7 +6,7 @@
 	<select id="SQL_SELECT_CAN_RESV_SPACES" resultType="com.spaceZ.serviceInfo.SpaceInfoVO" parameterType="com.spaceZ.search.SearchVO">
 		<![CDATA[select * from space 
 		where spaceid not in (select s.spaceid from space s join reservation r on s.spaceid = r.spaceid where (#{searchTime} >= r.startdate and #{searchTime} <= r.enddate)) 
-		and spacename like #{searchWord}]]>
+		and (spacename like #{searchWord} or info like #{searchWord} or location like #{searchWord})]]>
 	</select>
 	
 	<select id="SQL_SELECT_CAN_RESV_SPACES_2" resultType="com.spaceZ.serviceInfo.SpaceInfoVO" parameterType="com.spaceZ.search.SearchVO">
