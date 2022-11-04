@@ -68,11 +68,11 @@
 		console.log("여기1");
 		// IMP.request_pay(param, callback) 결제창 호출
 		IMP.request_pay({ // param
-			pg : "kakaopay.TC0ONETIME", //선결제는 : TC0ONETIME, 후결제,보증금결제는 :TCSUBSCRIP
+			pg : "kakaopay.TCSUBSCRIP", //선결제는 : TC0ONETIME, 후결제,보증금결제는 :TCSUBSCRIP
 			pay_method : 'card', // 기능 없음.
 			merchant_uid: '${merchant_uid}', // 상점에서 관리하는 주문 번호
 			name : '최초인증결제',
-			amount : 200, // 빌링키 발급과 함께 40원 결제승인을 시도합니다. price의 20%만 계산해서 넣는다. //후결제인 경우, 0으로 넣는다.
+			amount : 0, // 빌링키 발급과 함께 40원 결제승인을 시도합니다. price의 20%만 계산해서 넣는다. //후결제인 경우, 0으로 넣는다.
 			customer_uid : '1', // 필수 입력
 			buyer_email : 'iamport@siot.do',
 			buyer_name : '아임포트',
@@ -92,12 +92,13 @@
 						prepay_uid : rsp.merchant_uid,
 						memberId : 1,
 						companyId : 1,
-						payStatus : "1",
+						payStatus : "001",
 						price : 200, //총 결제 금액
-						prepay : "000", //000 : 선결제,001 : 보증금결제,002: 후결제
+						prepay : "002", //000 : 선결제,001 : 보증금결제,002: 후결제
 						spaceId : 1, // 사무공간 번호
-						startDate : "2022-11-02 14:00", // 공간 대여 시작날짜 시간
-						endDate : "2022-11-02 16:00" // 공간 대여 끝 날짜 시간
+						startDate : "2022-11-04 14:00", // 공간 대여 시작날짜 시간
+						endDate : "2022-11-04 16:00", // 공간 대여 끝 날짜 시간
+						mileage : 10
 					})
 				}).done(function(data, textStatus, xhr) {
 					console.log(xhr);

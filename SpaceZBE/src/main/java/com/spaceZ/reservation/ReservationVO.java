@@ -13,6 +13,9 @@ public class ReservationVO {
 	private String prepay; // 선결제 or 보증금결제 or 후결제 000 001 002
 	private String reserve_time; // 예약한 시간
 
+	// 마일리지사용
+	private int mileage;
+
 	// 결제정보
 	private String imp_uid; // 아임포트에서 제공하는 결제번호
 	private String prepay_uid; // 선결제, 보증금으로 결제한 우리가 제공한 merchant_uid(구매번호)
@@ -23,7 +26,7 @@ public class ReservationVO {
 	}
 
 	public ReservationVO(long reservationId, long spaceId, long memberId, long companyId, String startDate,
-			String endDate, String status, String payStatus, int price, String prepay, String reserve_time,
+			String endDate, String status, String payStatus, int price, String prepay, String reserve_time, int mileage,
 			String imp_uid, String prepay_uid, String postpay_uid) {
 		super();
 		this.reservationId = reservationId;
@@ -37,6 +40,7 @@ public class ReservationVO {
 		this.price = price;
 		this.prepay = prepay;
 		this.reserve_time = reserve_time;
+		this.mileage = mileage;
 		this.imp_uid = imp_uid;
 		this.prepay_uid = prepay_uid;
 		this.postpay_uid = postpay_uid;
@@ -64,6 +68,14 @@ public class ReservationVO {
 
 	public void setMemberId(long memberId) {
 		this.memberId = memberId;
+	}
+
+	public long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(long companyId) {
+		this.companyId = companyId;
 	}
 
 	public String getStartDate() {
@@ -122,12 +134,12 @@ public class ReservationVO {
 		this.reserve_time = reserve_time;
 	}
 
-	public long getCompanyId() {
-		return companyId;
+	public int getMileage() {
+		return mileage;
 	}
 
-	public void setCompanyId(long companyId) {
-		this.companyId = companyId;
+	public void setMileage(int mileage) {
+		this.mileage = mileage;
 	}
 
 	public String getImp_uid() {
@@ -159,8 +171,8 @@ public class ReservationVO {
 		return "ReservationVO [reservationId=" + reservationId + ", spaceId=" + spaceId + ", memberId=" + memberId
 				+ ", companyId=" + companyId + ", startDate=" + startDate + ", endDate=" + endDate + ", status="
 				+ status + ", payStatus=" + payStatus + ", price=" + price + ", prepay=" + prepay + ", reserve_time="
-				+ reserve_time + ", imp_uid=" + imp_uid + ", prepay_uid=" + prepay_uid + ", postpay_uid=" + postpay_uid
-				+ "]";
+				+ reserve_time + ", mileage=" + mileage + ", imp_uid=" + imp_uid + ", prepay_uid=" + prepay_uid
+				+ ", postpay_uid=" + postpay_uid + "]";
 	}
 
 }
