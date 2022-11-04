@@ -17,7 +17,7 @@
 		insert into reservation(reservationid, spaceid, companyid, memberid, startdate,
 		enddate, status, paystatus, price, prepay, reserve_time, imp_uid, prepay_uid, postpay_uid)
 		values(seq_reservation.nextval,#{spaceId},#{companyId},#{memberId},#{startDate},
-		#{endDate}, 001, #{payStatus}, #{price},
+		#{endDate}, '001', #{payStatus}, #{price},
 		#{prepay},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'), #{imp_uid}, #{prepay_uid} , #{postpay_uid})
 	</insert>
 

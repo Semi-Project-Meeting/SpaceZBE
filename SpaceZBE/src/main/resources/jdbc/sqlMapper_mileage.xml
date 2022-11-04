@@ -6,13 +6,18 @@
 	<insert id="SQL_MILEAGE_INSERT"
 		parameterType="com.spaceZ.mileage.MileageVO">
 		insert into
-		mileage(mileageid,memberid,spacename,score,mileage_date,status)
-		values(seq_mileage.nextval,#{memberId},#{spaceName},#{score},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),#{status})
+		mileage(mileageid,memberid,spacename,score,mileage_date,status,spaceid)
+		values(seq_mileage.nextval,#{memberId},#{spaceName},#{score},TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),#{status},#{spaceId})
 	</insert>
 
 	<select id="SQL_MILEAGE_SELECTALL"
 		resultType="com.spaceZ.mileage.MileageVO"> 
 		select * from mileage where memberid=#{memberid}
+	</select>
+
+	<select id="SQL_MILEAGE_SPACE_SELECTALL"
+		resultType="com.spaceZ.mileage.MileageVO"> 
+		select * from mileage where spaceid=#{spaceId}
 	</select>
 
 <!-- 	<select id="SQL_MILEAGE_SELECT_ONE" -->

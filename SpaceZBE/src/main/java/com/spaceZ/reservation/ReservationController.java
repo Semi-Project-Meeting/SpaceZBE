@@ -27,7 +27,7 @@ public class ReservationController {
 	public String insert(@RequestBody ReservationVO vo) {
 		
 		logger.info("insert..{}");
-		
+		logger.info("vo:{}",vo);
 		String txt = "{\"result\": OK}";
 		
 		List<ReservationVO> vos = service.duplicate(vo);
@@ -48,7 +48,7 @@ public class ReservationController {
 	public String update(@RequestBody ReservationVO vo) {
 		
 		logger.info("office cancel..");
-		
+		logger.info("vo:{}",vo);
 		String txt = "{\"result\": OK}";
 		
 		int result = service.officeCancel(vo);

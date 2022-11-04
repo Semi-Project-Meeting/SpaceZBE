@@ -1,12 +1,8 @@
 package com.spaceZ.mileage;
 
-import java.util.List;
-
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.spaceZ.reservation.ReservationVO;
@@ -24,7 +20,7 @@ public class MileageService {
 		return dao.insertMileage(vo);
 	}
 
-	public int updateMileage(MileageVO vo) {
+	public int updateMileage(ReservationVO vo) {
 		logger.info("updateMileage");		
 		return dao.updateMileage(vo);
 	}
@@ -37,6 +33,16 @@ public class MileageService {
 	public ProfileDTO selectAll(long memberId) {
 		logger.info("selectAll");		
 		return dao.selectAll(memberId);
+	}
+	
+	public ProfileDTO getTotal_score(long memberId) {
+		logger.info("getTotal_score");		
+		return dao.getTotal_score(memberId);
+	}
+	
+	public int refundMileage(ReservationVO vo) {
+		logger.info("refundMileage");		
+		return dao.refundMileage(vo);
 	}
 
 }

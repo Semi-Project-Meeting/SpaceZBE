@@ -170,18 +170,16 @@ public class PaymentDAOimpl implements PaymentDAO {
 	@Override
 	public int depositOK(ReservationVO vo) {
 		int flag = 0;
-		int depositPrice = (int) (vo.getPrice() * 0.2);
-		logger.info("depositPrice:{}", depositPrice);
-
+		
 		// 계산되어야 할 값과 실제 계산된 값이 맞는지 확인.
 		int price = getPaymentInfo(vo);
 		logger.info("실제 계산된 돈: {}", price);
 		SpaceInfoVO vo2 = spaceInfoService.selectOne(vo.getSpaceId());
 		int price2 = (int) (vo2.getPrice() * getReserveTime(vo.getStartDate(), vo.getEndDate()));
-		depositPrice = (int) (price2 * 0.2);
+		int depositPrice = (int) (price2 * 0.2);
 		logger.info("계산되어야할 돈: {}", depositPrice);
 		if (price == depositPrice) {
-			vo.setPrice(price2 - depositPrice);
+			vo.setPrice(price2 - depositPrice - vo.getMileage());
 			reserve(vo);
 			flag = 1;
 		}
@@ -199,7 +197,7 @@ public class PaymentDAOimpl implements PaymentDAO {
 		logger.info("실제 계산된 돈: {}", price);
 		// 계산되어야할 가격 확인
 		SpaceInfoVO vo2 = spaceInfoService.selectOne(vo.getSpaceId());
-		int price2 = vo2.getPrice() * getReserveTime(vo.getStartDate(), vo.getEndDate());
+		int price2 = vo2.getPrice() * getReserveTime(vo.getStartDate(), vo.getEndDate()) - vo.getMileage();
 		logger.info("계산되어야할 돈: {}", price2);
 		// 가격 비교
 		if (price != price2) {
@@ -220,7 +218,7 @@ public class PaymentDAOimpl implements PaymentDAO {
 		HttpsURLConnection conn = null;
 
 		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("amount", vo.getPrice());
+		jsonObject.put("amount", vo.getPrice()-vo.getMileage());
 		jsonObject.put("schedule_at", getUnixTime(vo.getEndDate()));
 		jsonObject.put("merchant_uid", merchant_uid);
 

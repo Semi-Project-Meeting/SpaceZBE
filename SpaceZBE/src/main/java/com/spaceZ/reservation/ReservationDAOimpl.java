@@ -25,8 +25,8 @@ public class ReservationDAOimpl implements ReservationDAO {
 	PaymentService paymentService;
 
 	@Autowired
-	MileageService mileageService; 
-	
+	MileageService mileageService;
+
 	@Override
 	// 예약하기
 	public int reserve(ReservationVO vo) {
@@ -39,9 +39,15 @@ public class ReservationDAOimpl implements ReservationDAO {
 			vo.setPostpay_uid("000");
 			// paystatus: 결제 전 001, 결제 완료 002, 결제 취소 000, 보증금 결제완료 003, 보증금 결제취소 004
 			vo.setPayStatus("002");
-			
-			//마일리지 적립
-			if(flag == 1) {
+
+			// 마일리지 사용 및 적립
+			if (flag == 1) {
+				// 마일리지 사용
+				if (vo.getMileage() > 0) {
+					mileageService.updateMileage(vo);
+					logger.info("마일리지 사용 완료");
+				}
+				// 마일리지 적립
 				mileageService.insertMileage(vo);
 				logger.info("마일리지 적립 완료");
 			}
@@ -50,9 +56,19 @@ public class ReservationDAOimpl implements ReservationDAO {
 			flag = paymentService.depositOK(vo);
 			vo.setPayStatus("003");
 			vo.setPrice(origin_price);
+			// 마일리지 사용
+			if (vo.getMileage() > 0) {
+				mileageService.updateMileage(vo);
+				logger.info("마일리지 사용 완료");
+			}
 		} else if (vo.getPrepay().equals("002")) {
 			flag = paymentService.reserve(vo);
 			vo.setPayStatus("001");
+			// 마일리지 사용
+			if (vo.getMileage() > 0) {
+				mileageService.updateMileage(vo);
+				logger.info("마일리지 사용 완료");
+			}
 		}
 
 		logger.info("vo:{}", vo);
@@ -68,11 +84,19 @@ public class ReservationDAOimpl implements ReservationDAO {
 	@Override
 	// 오피스 예약 취소하기 (status 상태만 예약 취소로 변경한다.)
 	public int officeCancel(ReservationVO vo) {
+		logger.info("officeCancel..");
+		int flag = 0;
 
 		vo = sqlSession.selectOne("SQL_RESERVE_ONE", vo);
-		String postpay_uid = vo.getPostpay_uid();
-		paymentService.refund(new RefundVO(postpay_uid, "후결제 예약취소", 0, vo.getMemberId()));
-		int flag = sqlSession.update("SQL_RESERVE_CANCEL", vo);
+
+		if (vo.getStatus().equals("001")) {
+			String postpay_uid = vo.getPostpay_uid();
+			paymentService.refund(new RefundVO(postpay_uid, "후결제 예약취소", 0, vo.getMemberId()));
+			flag = sqlSession.update("SQL_RESERVE_CANCEL", vo);
+			// 사용한 마일리지 환급
+			mileageService.refundMileage(vo);
+			logger.info("마일리지 환급 완료");
+		}
 		return flag;
 	}
 
@@ -80,7 +104,8 @@ public class ReservationDAOimpl implements ReservationDAO {
 	// 데스크 회의실 예약 취소하기 (status 상태를 예약 취소로 바꾸고 결제만 환불 된다.)
 	public int deskCancel(String reservationId) {
 		logger.info("desk-Cancel..");
-
+		int flag = 0;
+		
 		// 예약 번호에 대한 예약한 시간 가져오기.
 		float reverse_time = sqlSession.selectOne("SQL_RESERVE_TIME", reservationId);
 
@@ -88,36 +113,47 @@ public class ReservationDAOimpl implements ReservationDAO {
 
 		// 결제 내용 확인.
 		ReservationVO vo = sqlSession.selectOne("SQL_RESERVE_ONE", reservationId);
-		// prepay: 선결제(000) or 보증금결제(001)로 desk,회의실 결제
-		if (vo.getPrepay().equals("000")) {
-			String prepay_uid = vo.getPrepay_uid();
-			paymentService.refund(new RefundVO(prepay_uid, "선결제 결제취소", vo.getPrice(), vo.getMemberId()));
-			vo.setPayStatus("000");
-			
-			//마일리지 취소
-			mileageService.deleteMileage(vo);
-			logger.info("마일리지 취소, 회수 완료");
-		} else {
-
-			// 예약한지 1시간 이내일 때 (전체 환불)
-			if (reverse_time <= 1) {
-				logger.info("{} : 예약한지 1시간이 지나지 않았습니다. (전체 환불 가능)", reverse_time);
+		if (vo.getStatus().equals("001")) {
+			// prepay: 선결제(000) or 보증금결제(001)로 desk,회의실 결제
+			if (vo.getPrepay().equals("000")) {
 				String prepay_uid = vo.getPrepay_uid();
-				paymentService.refund(new RefundVO(prepay_uid, "보증금결제 취소", (int)(vo.getPrice()*0.2), vo.getMemberId()));
-				String postpay_uid = vo.getPostpay_uid();
-				paymentService.refund(new RefundVO(postpay_uid, "후결제 예약취소", 0, vo.getMemberId()));
-				vo.setPayStatus("004");
-			}
-			// 예약한지 1시간 이후일 (선결제만 환불 가능, 보증금 환불 불가능)
-			else if (reverse_time > 1) {
-				logger.info("{} : 예약한지 1시간이 지났으요 (선결제만 환불 가능)", reverse_time);
-				String postpay_uid = vo.getPostpay_uid();
-				paymentService.refund(new RefundVO(postpay_uid, "후결제 예약취소", 0, vo.getMemberId()));
-			}
-		}
-		// 예약중 -> 예약취소
-		int flag = sqlSession.update("SQL_RESERVE_CANCEL", vo);
+				paymentService.refund(new RefundVO(prepay_uid, "선결제 결제취소", vo.getPrice(), vo.getMemberId()));
+				vo.setPayStatus("000");
 
+				// 마일리지 취소
+				mileageService.deleteMileage(vo);
+				logger.info("마일리지 취소, 회수 완료");
+				// 사용한 마일리지 환급
+				mileageService.refundMileage(vo);
+
+			} else {
+
+				// 예약한지 1시간 이내일 때 (전체 환불)
+				if (reverse_time <= 1) {
+					logger.info("{} : 예약한지 1시간이 지나지 않았습니다. (전체 환불 가능)", reverse_time);
+					String prepay_uid = vo.getPrepay_uid();
+					paymentService.refund(
+							new RefundVO(prepay_uid, "보증금결제 취소", (int) (vo.getPrice() * 0.2), vo.getMemberId()));
+					String postpay_uid = vo.getPostpay_uid();
+					paymentService.refund(new RefundVO(postpay_uid, "후결제 예약취소", 0, vo.getMemberId()));
+					vo.setPayStatus("004");
+					// 사용한 마일리지 환급
+					mileageService.refundMileage(vo);
+					logger.info("마일리지 환급 완료");
+				}
+				// 예약한지 1시간 이후일 (선결제만 환불 가능, 보증금 환불 불가능)
+				else if (reverse_time > 1) {
+					logger.info("{} : 예약한지 1시간이 지났으요 (선결제만 환불 가능)", reverse_time);
+					String postpay_uid = vo.getPostpay_uid();
+					paymentService.refund(new RefundVO(postpay_uid, "후결제 예약취소", 0, vo.getMemberId()));
+					// 사용한 마일리지 환급
+					mileageService.refundMileage(vo);
+					logger.info("마일리지 환급 완료");
+				}
+			}
+			// 예약중 -> 예약취소
+			flag = sqlSession.update("SQL_RESERVE_CANCEL", vo);
+		}
 		return flag;
 	}
 

@@ -4,6 +4,7 @@ public class MileageVO {
 
 	private long mileageId;
 	private long memberId;
+	private long spaceId;
 	private String spaceName;
 	private int score;
 	private String mileage_date;
@@ -13,10 +14,12 @@ public class MileageVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MileageVO(long mileageId, long memberId, String spaceName, int score, String mileage_date, String status) {
+	public MileageVO(long mileageId, long memberId, long spaceId, String spaceName, int score, String mileage_date,
+			String status) {
 		super();
 		this.mileageId = mileageId;
 		this.memberId = memberId;
+		this.spaceId = spaceId;
 		this.spaceName = spaceName;
 		this.score = score;
 		this.mileage_date = mileage_date;
@@ -37,6 +40,14 @@ public class MileageVO {
 
 	public void setMemberId(long memberId) {
 		this.memberId = memberId;
+	}
+
+	public long getSpaceId() {
+		return spaceId;
+	}
+
+	public void setSpaceId(long spaceId) {
+		this.spaceId = spaceId;
 	}
 
 	public String getSpaceName() {
@@ -73,54 +84,10 @@ public class MileageVO {
 
 	@Override
 	public String toString() {
-		return "MileageVO [mileageId=" + mileageId + ", memberId=" + memberId + ", spaceName=" + spaceName + ", score="
-				+ score + ", mileage_date=" + mileage_date + ", status=" + status + "]";
+		return "MileageVO [mileageId=" + mileageId + ", memberId=" + memberId + ", spaceId=" + spaceId + ", spaceName="
+				+ spaceName + ", score=" + score + ", mileage_date=" + mileage_date + ", status=" + status + "]";
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (int) (memberId ^ (memberId >>> 32));
-		result = prime * result + (int) (mileageId ^ (mileageId >>> 32));
-		result = prime * result + ((mileage_date == null) ? 0 : mileage_date.hashCode());
-		result = prime * result + score;
-		result = prime * result + ((spaceName == null) ? 0 : spaceName.hashCode());
-		result = prime * result + ((status == null) ? 0 : status.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		MileageVO other = (MileageVO) obj;
-		if (memberId != other.memberId)
-			return false;
-		if (mileageId != other.mileageId)
-			return false;
-		if (mileage_date == null) {
-			if (other.mileage_date != null)
-				return false;
-		} else if (!mileage_date.equals(other.mileage_date))
-			return false;
-		if (score != other.score)
-			return false;
-		if (spaceName == null) {
-			if (other.spaceName != null)
-				return false;
-		} else if (!spaceName.equals(other.spaceName))
-			return false;
-		if (status == null) {
-			if (other.status != null)
-				return false;
-		} else if (!status.equals(other.status))
-			return false;
-		return true;
-	}
+	
 
 }
