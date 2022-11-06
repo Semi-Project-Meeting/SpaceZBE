@@ -13,5 +13,7 @@ public interface MemberDAO {
 	public int idCheck(MemberVO vo);
 	public int sendEmail(EmailVO vo) throws MessagingException;
 	public int update(MemberVO vo);
+	long companyId(MemberVO vo);
+	String authority(MemberVO vo);
 	
 }

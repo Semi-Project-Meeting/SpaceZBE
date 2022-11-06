@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spaceZ.master.ManagerVO;
 import com.spaceZ.member.MemberDAO;
 import com.spaceZ.reservation.ReservationVO;
 
@@ -30,6 +31,11 @@ public class MypageService {
 	public List<ReservationVO> totalSelectAll(String memberId) {
 		
 		return dao.totalReserve(memberId);
+	}
+
+	public List<ManagerVO> qnaSelectAll(String memberId) {
+		// TODO Auto-generated method stub
+		return dao.qnaSelectAll(memberId);
 	}
 
 	

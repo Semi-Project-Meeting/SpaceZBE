@@ -51,4 +51,6 @@ public class SearchController {
 		
 		return "search";
 	}
+	
+	// 전체 
 }
