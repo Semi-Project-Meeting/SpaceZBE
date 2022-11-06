@@ -81,6 +81,7 @@ public class MemberController {
 
 		long memberid = service.login(vo);
 		long companyId = service.companyId(vo);
+		
 		String authority = service.authority(vo);
 		
 //		String txt = "{\"member_id\": "+memberid+","+

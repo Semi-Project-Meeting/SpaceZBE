@@ -98,7 +98,10 @@ public class MemberDAOimpl implements MemberDAO {
 
 		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_LOGIN", vo);
 
-		long companyId = sqlSession.selectOne("SQL_COMPANY_SELECT_ONE", vo2);
+		Long companyId = sqlSession.selectOne("SQL_COMPANY_SELECT_ONE", vo2);
+		if(companyId == null) {
+			companyId = 0l;
+		}
 
 		return companyId;
 	}
