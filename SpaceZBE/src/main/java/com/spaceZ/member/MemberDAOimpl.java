@@ -40,8 +40,8 @@ public class MemberDAOimpl implements MemberDAO {
 	public int signUp(MemberVO vo) {
 		logger.info("signUp()...");
 		logger.info("{}", vo);
-		
-		//기본이미지 저장
+
+		// 기본이미지 저장
 		vo.setImgname("img_0001.png");
 
 		int flag = 0;
@@ -90,6 +90,28 @@ public class MemberDAOimpl implements MemberDAO {
 		}
 
 		return memberid;
+	}
+
+	// 로그인 후 companyId 받아오기
+	@Override
+	public long companyId(MemberVO vo) {
+
+		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_LOGIN", vo);
+
+		long companyId = sqlSession.selectOne("SQL_COMPANY_SELECT_ONE", vo2);
+
+		return companyId;
+	}
+
+	// 로그인 후 authority 받아오기
+	@Override
+	public String authority(MemberVO vo) {
+
+		MemberVO vo2 = sqlSession.selectOne("SQL_MEMBER_LOGIN", vo);
+
+		String authority = sqlSession.selectOne("SQL_AUTHORITY_SELECT_ONE", vo2);
+		
+		return authority;
 	}
 
 	@Override

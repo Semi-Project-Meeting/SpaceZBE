@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Repository;
 
+import com.spaceZ.master.ManagerVO;
 import com.spaceZ.reservation.ReservationVO;
 import com.spaceZ.spaceZBE.ImageFAO;
 
@@ -43,6 +44,12 @@ public class MypageDAOimpl implements MypageDAO {
 		List<ReservationVO> vos = sqlSession.selectList("SQL_TOTAL_RESERVE",memberId);
 
 		return vos;
+	}
+
+	@Override
+	public List<ManagerVO> qnaSelectAll(String memberId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

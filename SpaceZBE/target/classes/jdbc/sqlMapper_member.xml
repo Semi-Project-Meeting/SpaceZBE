@@ -24,6 +24,10 @@
 	<select id="SQL_COMPANY_SELECT_ONE" resultType="long"> 
 		select companyid from company where memberid=#{memberid}
 	</select>
+	
+	<select id="SQL_AUTHORITY_SELECT_ONE" resultType="String"> 
+		select authority from member where memberid=#{memberid}
+	</select>
 
 	<select id="SQL_MEMBER_EMAIL_CHECK"
 		resultType="com.spaceZ.member.MemberVO"> 

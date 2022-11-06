@@ -1,5 +1,8 @@
 package com.spaceZ.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -70,20 +73,34 @@ public class MemberController {
 	// 로그인
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST, produces = "application/json; charset=utf8")
 	@ResponseBody
-	public String login(@RequestBody MemberVO vo) {
+	public Map<String,String> login(@RequestBody MemberVO vo) {
 
 		logger.info("login..");
 		logger.info("vo : {}", vo);
 
 
 		long memberid = service.login(vo);
-		String txt = "{\"member_id\": "+memberid+"}";
+		long companyId = service.companyId(vo);
+		String authority = service.authority(vo);
+		
+//		String txt = "{\"member_id\": "+memberid+","+
+//				"\"company_id\": " + companyId +","+
+//				"\"authority\": " + authority +
+//					"}";
 
-		if (memberid == 0) {
-			txt = "{\"result\": 로그인 실패.}";
-		}
-
-		return txt;
+//		if (memberid == 0) {
+//			txt = "{\"result\": 로그인 실패.}";
+//		}
+//		logger.info("{}", txt);
+		
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("member_id", memberid+"");
+		map.put("company_id", companyId+"");
+		map.put("authority", authority);
+		
+		logger.info("{}", map);
+		
+		return map;
 	}
 	
 

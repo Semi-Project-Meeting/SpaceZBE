@@ -39,5 +39,16 @@ public class MemberService {
 		logger.info("update...");
 		return dao.update(vo);
 	}
+	
+	// 로컬 스토리지에 필요한 업체번호
+	public long companyId(MemberVO vo) {
+		
+		return dao.companyId(vo);
+	}
+	// 로컬 스토리지에 필요한 권한 
+	public String authority(MemberVO vo) {
+		
+		return dao.authority(vo);
+	}
 
 }

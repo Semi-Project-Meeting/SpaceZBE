@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spaceZ.master.ManagerVO;
 import com.spaceZ.reservation.ReservationVO;
 
 /**
@@ -50,5 +51,14 @@ public class MypageController {
 		
 		return vos;
 	}
-
+	
+	// 문의 내용 확인
+	@RequestMapping(value = "/qna-selectAll", method = RequestMethod.GET)
+	@ResponseBody 
+	public List<ManagerVO> qnaSelectAll(@RequestParam(value = "memberId") String memberId) {
+		
+		List<ManagerVO> vos = service.qnaSelectAll(memberId);
+				
+		return vos;
+	}
 }
