@@ -16,7 +16,7 @@
 <br>
 
 <details> 
-  <summary><strong> 🗨️사무공간 예약기능</strong></summary>
+  <summary><strong> 🛩 사무공간 예약기능</strong></summary>
   <br/>
   <ul>
     <li>원하는 시간을 선택한 뒤 예약하기 버튼을 클릭하고 결제 방법에 따라 예약이 가능합니다.</li>
@@ -27,7 +27,7 @@
 </details>
 
 <details> 
-  <summary><strong>🕹️결제 기능</strong></summary>
+  <summary><strong> 💵 결제 기능</strong></summary>
   <br/>
   <ul>
     <li>회의실과 데스크 사무공간 결제는 선결제(전체)와 보증금 결제로 나뉘어져 결제가 가능하며 오피스 사무공간은 예약결제로 진행이 됩니다.</li>
@@ -36,7 +36,7 @@
   </ul>
 </details>
 <details> 
-  <summary><strong>🕹️지도기반 검색</strong></summary>
+  <summary><strong> 🗺 지도기반 검색</strong></summary>
   <br/>
   <ul>
     <li>검색창을 클릭 시 일반 검색도 가능하지만 위치를 입력할 경우 지도로 이용가능한 사무공간이 보여지게 됩니다.</li>
