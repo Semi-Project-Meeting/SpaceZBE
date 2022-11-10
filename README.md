@@ -45,14 +45,12 @@
 <br>
 
 ## 🗒️ 기능명세서
-<img width="100" src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
-<a href="https://pointy-resistance-d0f.notion.site/f2176b965c7649ec8dd68e9d900088f8?v=1459dc2e7977419ba5e469a98b8c2382">https://pointy-resistance-d0f.notion.site/f2176b965c7649ec8dd68e9d900088f8?v=1459dc2e7977419ba5e469a98b8c2382</a>
+<a href="https://pointy-resistance-d0f.notion.site/f2176b965c7649ec8dd68e9d900088f8?v=1459dc2e7977419ba5e469a98b8c2382"><img width="100" src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" /></a>
 <br>
 <br>
 
 ## 🗒️ API명세서
-<img width="100" src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
-<a href="https://pointy-resistance-d0f.notion.site/API-18b5ed87d3594631907b776bb66916f9">https://pointy-resistance-d0f.notion.site/API-18b5ed87d3594631907b776bb66916f9</a>
+<a href="https://pointy-resistance-d0f.notion.site/API-18b5ed87d3594631907b776bb66916f9"><img width="100" src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" /></a>
 <br>
 <br>
 
@@ -72,10 +70,10 @@
 
  
  
-|       | 기술 스택                                               |    
+  
 |:--------:|:----------------------------------------------------------:|
-| FE   |  <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"><img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"><img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"><img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=Vue&logoColor=white">|
-| BE   |  <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"><img src="https://img.shields.io/badge/Oracle-4479A1?style=for-the-badge&logo=Oracle&logoColor=white"><img src="https://img.shields.io/badge/JDBC-DC382D?style=for-the-badge&logo=JDBC&logoColor=white"><img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Mybatis-2E51A2?style=for-the-badge&logo=Mybatis&logoColor=white">|
+| FE   |  <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"> <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"> <img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the-badge&logo=Vue&logoColor=white">|
+| BE   |  <img src="https://img.shields.io/badge/JAVA-007396?style=for-the-badge&logo=java&logoColor=white"> <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"> <img src="https://img.shields.io/badge/Oracle-4479A1?style=for-the-badge&logo=Oracle&logoColor=white"> <img src="https://img.shields.io/badge/JDBC-DC382D?style=for-the-badge&logo=JDBC&logoColor=white"> <img src="https://img.shields.io/badge/Mybatis-2E51A2?style=for-the-badge&logo=Mybatis&logoColor=white">|
 
 
 </br>
