@@ -20,7 +20,8 @@
   <br/>
   <ul>
     <li>원하는 시간을 선택한 뒤 예약하기 버튼을 클릭하고 결제 방법에 따라 예약이 가능합니다.</li>
-   <img width="600" alt="스크린샷 2022-11-10 오후 5 48 35" src="https://user-images.githubusercontent.com/58718743/201044420-61aa732d-cb7a-4755-b6dd-984f065c3e25.png">
+    <li>이미 예약된 시간과 날짜에는 예약할 수 없습니다.</li>
+  <li> <img width="600" alt="스크린샷 2022-11-10 오후 5 48 35" src="https://user-images.githubusercontent.com/58718743/201044420-61aa732d-cb7a-4755-b6dd-984f065c3e25.png"> </li>
    
   </ul>
 </details>
@@ -30,7 +31,8 @@
   <br/>
   <ul>
     <li>회의실과 데스크 사무공간 결제는 선결제(전체)와 보증금 결제로 나뉘어져 결제가 가능하며 오피스 사무공간은 예약결제로 진행이 됩니다.</li>
-    이미지 넣을 자리
+    <li><img width="600" alt="스크린샷 2022-11-10 오후 5 58 16" src="https://user-images.githubusercontent.com/58718743/201048385-78fc8af6-abd3-4014-8805-d320b8f030d0.png"></li>
+    <li><img width="600" alt="스크린샷 2022-11-10 오후 5 58 16" src="https://user-images.githubusercontent.com/58718743/201048987-610589b5-88cb-4761-8c8a-a1604c164569.png"></li>
   </ul>
 </details>
 <details> 
@@ -38,8 +40,8 @@
   <br/>
   <ul>
     <li>검색창을 클릭 시 일반 검색도 가능하지만 위치를 입력할 경우 지도로 이용가능한 사무공간이 보여지게 됩니다.</li>
-    <img width="440" alt="스크린샷 2022-11-10 오후 5 58 16" src="https://user-images.githubusercontent.com/58718743/201046408-63209b9a-c8b4-4bc4-b0aa-f3ea34868049.png">
-    <img width="600" alt="스크린샷 2022-11-10 오후 5 58 56" src="https://user-images.githubusercontent.com/58718743/201046299-a399aabf-fc5f-48ea-9924-004209f3bc5b.png">
+   <li><img width="600" alt="스크린샷 2022-11-10 오후 5 58 16" src="https://user-images.githubusercontent.com/58718743/201046408-63209b9a-c8b4-4bc4-b0aa-f3ea34868049.png"></li>
+    <li><img width="600" alt="스크린샷 2022-11-10 오후 5 58 56" src="https://user-images.githubusercontent.com/58718743/201046299-a399aabf-fc5f-48ea-9924-004209f3bc5b.png"></li>
   </ul>
 </details>
 <br>
