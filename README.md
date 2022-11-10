@@ -46,13 +46,13 @@
 
 ## 🗒️ 기능명세서
 <img width="100" src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
-<a href="https://deadpan-flame-f67.notion.site/88ecbb8ca623435eafe66a8e64fc8db8?v=4e22347b5a82414ca704d74f24df0857">https://deadpan-flame-f67.notion.site/88ecbb8ca623435eafe66a8e64fc8db8?v=4e22347b5a82414ca704d74f24df0857</a>
+<a href="https://pointy-resistance-d0f.notion.site/f2176b965c7649ec8dd68e9d900088f8?v=1459dc2e7977419ba5e469a98b8c2382">https://pointy-resistance-d0f.notion.site/f2176b965c7649ec8dd68e9d900088f8?v=1459dc2e7977419ba5e469a98b8c2382</a>
 <br>
 <br>
 
 ## 🗒️ API명세서
 <img width="100" src="https://img.shields.io/badge/Notion-000000?style=flat&logo=Notion&logoColor=white" />
-<a href="https://deadpan-flame-f67.notion.site/88ecbb8ca623435eafe66a8e64fc8db8?v=4e22347b5a82414ca704d74f24df0857">https://deadpan-flame-f67.notion.site/88ecbb8ca623435eafe66a8e64fc8db8?v=4e22347b5a82414ca704d74f24df0857</a>
+<a href="https://pointy-resistance-d0f.notion.site/API-18b5ed87d3594631907b776bb66916f9">https://pointy-resistance-d0f.notion.site/API-18b5ed87d3594631907b776bb66916f9</a>
 <br>
 <br>
 
