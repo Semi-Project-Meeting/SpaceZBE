@@ -10,7 +10,7 @@
 
 # :tv: 시연영상
 
-<img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=YouTube&logoColor=white"/>(https://youtu.be/BG2JleLayLE)
+<img src="https://img.shields.io/badge/YouTube-FF0000?style=flat&logo=YouTube&logoColor=white"/>
 
 ## 🔧 주요 기능
 <br>
