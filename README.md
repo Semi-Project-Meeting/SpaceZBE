@@ -19,10 +19,9 @@
   <summary><strong> 🗨️사무공간 예약기능</strong></summary>
   <br/>
   <ul>
-    <li>모임 초대 알림, 모임 개설 완료 알림 등 유저에게 해당하는 알림이 보입니다.</li>
-    <li>모든 알림을 읽고 전부 삭제한다면 알림이 없다고 표시됩니다.</li>
-   <img width="600" alt="KakaoTalk_Photo_2022-10-06-16-35-02-1" src="https://user-images.githubusercontent.com/58718743/194262953-133ba9e3-dc6e-43fd-a44c-45cbd704e8e9.png">
-   <img width="600" alt="KakaoTalk_Photo_2022-10-06-16-35-02-2" src="https://user-images.githubusercontent.com/58718743/194263214-0ba3e8b3-1eac-4446-ae05-5951ea12e7a2.png">
+    <li>원하는 시간을 선택한 뒤 예약하기 버튼을 클릭하고 결제 방법에 따라 예약이 가능합니다.</li>
+   <img width="600" alt="스크린샷 2022-11-10 오후 5 48 35" src="https://user-images.githubusercontent.com/58718743/201044420-61aa732d-cb7a-4755-b6dd-984f065c3e25.png">
+   
   </ul>
 </details>
 
@@ -30,16 +29,17 @@
   <summary><strong>🕹️결제 기능</strong></summary>
   <br/>
   <ul>
-    <li>성별,나이,지역에 따라 현재 로그인한 유저의 맞게 추천 액티비티를 보여준다.</li>
-    <img width="527" alt="KakaoTalk_Photo_2022-10-06-16-35-02-3" src="https://user-images.githubusercontent.com/58718743/194263463-d79f28aa-fa4c-40d6-8fe2-95f431995c2e.png">
+    <li>회의실과 데스크 사무공간 결제는 선결제(전체)와 보증금 결제로 나뉘어져 결제가 가능하며 오피스 사무공간은 예약결제로 진행이 됩니다.</li>
+    이미지 넣을 자리
   </ul>
 </details>
 <details> 
   <summary><strong>🕹️지도기반 검색</strong></summary>
   <br/>
   <ul>
-    <li>성별,나이,지역에 따라 현재 로그인한 유저의 맞게 랜덤으로 추천 모임 를 보여준다.</li>
-    <img width="527" alt="KakaoTalk_Photo_2022-10-06-16-35-02-3" src="https://user-images.githubusercontent.com/58718743/194291269-1fb10e50-0cb4-41d1-b10e-5c5755cb21d7.png">
+    <li>검색창을 클릭 시 일반 검색도 가능하지만 위치를 입력할 경우 지도로 이용가능한 사무공간이 보여지게 됩니다.</li>
+    <img width="440" alt="스크린샷 2022-11-10 오후 5 58 16" src="https://user-images.githubusercontent.com/58718743/201046408-63209b9a-c8b4-4bc4-b0aa-f3ea34868049.png">
+    <img width="600" alt="스크린샷 2022-11-10 오후 5 58 56" src="https://user-images.githubusercontent.com/58718743/201046299-a399aabf-fc5f-48ea-9924-004209f3bc5b.png">
   </ul>
 </details>
 <br>
